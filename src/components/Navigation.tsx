@@ -29,7 +29,7 @@ const Navigation = () => {
   }, []);
 
   return (
-    <nav className={`nav-fixed ${isScrolled ? 'nav-scrolled' : ''}`}>
+    <nav className={`nav-fixed bg-white/95 backdrop-blur-sm shadow-lg`}>
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
