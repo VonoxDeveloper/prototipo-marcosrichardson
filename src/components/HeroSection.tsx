@@ -91,7 +91,7 @@ const HeroSection = () => {
         </div>
 
         {/* Stats */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-16 max-w-4xl mx-auto">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-12 mb-16 max-w-4xl mx-auto">
           <div className="text-center bounce-in">
             <Users className="h-8 w-8 mx-auto mb-2 text-white" />
             <div className="text-2xl font-bold">1200+</div>
