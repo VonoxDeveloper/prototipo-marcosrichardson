@@ -2,41 +2,61 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
-All colors MUST be HSL.
-*/
+/* School Website Design System */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
 
 @layer base {
   :root {
+    /* School Brand Colors */
     --background: 0 0% 100%;
-    --foreground: 222.2 84% 4.9%;
-
+    --foreground: 0 0% 0%;
+    
     --card: 0 0% 100%;
-    --card-foreground: 222.2 84% 4.9%;
-
+    --card-foreground: 0 0% 0%;
+    
     --popover: 0 0% 100%;
-    --popover-foreground: 222.2 84% 4.9%;
-
-    --primary: 222.2 47.4% 11.2%;
-    --primary-foreground: 210 40% 98%;
-
-    --secondary: 210 40% 96.1%;
-    --secondary-foreground: 222.2 47.4% 11.2%;
-
-    --muted: 210 40% 96.1%;
-    --muted-foreground: 215.4 16.3% 46.9%;
-
-    --accent: 210 40% 96.1%;
-    --accent-foreground: 222.2 47.4% 11.2%;
-
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 210 40% 98%;
-
-    --border: 214.3 31.8% 91.4%;
-    --input: 214.3 31.8% 91.4%;
-    --ring: 222.2 84% 4.9%;
-
-    --radius: 0.5rem;
+    --popover-foreground: 0 0% 0%;
+    
+    /* School Blue Primary */
+    --primary: 210 64% 60%;
+    --primary-foreground: 0 0% 100%;
+    
+    /* School Purple Secondary */
+    --secondary: 250 68% 28%;
+    --secondary-foreground: 0 0% 100%;
+    
+    --muted: 210 40% 96%;
+    --muted-foreground: 0 0% 45%;
+    
+    --accent: 210 64% 60%;
+    --accent-foreground: 0 0% 100%;
+    
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
+    
+    --border: 220 13% 91%;
+    --input: 220 13% 91%;
+    --ring: 210 64% 60%;
+    
+    --radius: 0.75rem;
+    
+    /* Custom School Variables */
+    --school-blue: 210 64% 60%;
+    --school-purple: 250 68% 28%;
+    --school-white: 0 0% 100%;
+    --school-black: 0 0% 0%;
+    
+    /* Gradients */
+    --gradient-hero: linear-gradient(135deg, hsl(var(--school-blue)), hsl(var(--school-purple)));
+    --gradient-card: linear-gradient(135deg, hsl(var(--school-white)), hsl(var(--muted)));
+    
+    /* Shadows */
+    --shadow-card: 0 4px 20px -4px hsl(var(--school-blue) / 0.1);
+    --shadow-hero: 0 10px 40px -10px hsl(var(--school-purple) / 0.3);
+    
+    /* Animations */
+    --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-bounce: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
 
     --sidebar-background: 0 0% 98%;
 
@@ -100,6 +120,144 @@ All colors MUST be HSL.
   }
 
   body {
-    @apply bg-background text-foreground;
+    @apply bg-background text-foreground font-inter antialiased;
+  }
+}
+
+@layer components {
+  /* Hero Section Styles */
+  .hero-section {
+    @apply relative min-h-screen flex items-center justify-center overflow-hidden;
+    background: var(--gradient-hero);
+  }
+
+  .hero-content {
+    @apply text-center text-white z-10 px-4 max-w-4xl mx-auto;
+  }
+
+  /* Navigation Styles */
+  .nav-fixed {
+    @apply fixed top-0 left-0 right-0 z-50 transition-all duration-300;
+    backdrop-filter: blur(10px);
+  }
+
+  .nav-scrolled {
+    @apply bg-white/95 shadow-lg;
+  }
+
+  .nav-link {
+    @apply relative text-foreground hover:text-primary transition-colors duration-300;
+  }
+
+  .nav-link.active {
+    @apply text-primary;
+  }
+
+  .nav-link::after {
+    @apply content-[''] absolute bottom-0 left-0 w-0 h-0.5 bg-primary transition-all duration-300;
+  }
+
+  .nav-link:hover::after,
+  .nav-link.active::after {
+    @apply w-full;
+  }
+
+  /* Button Variants */
+  .btn-hero {
+    @apply bg-white text-primary hover:bg-primary hover:text-white;
+    box-shadow: var(--shadow-hero);
+    transition: var(--transition-smooth);
+  }
+
+  .btn-hero:hover {
+    @apply scale-105;
+  }
+
+  .btn-school {
+    @apply bg-primary text-primary-foreground hover:bg-primary/90;
+    transition: var(--transition-smooth);
+  }
+
+  .btn-school:hover {
+    @apply scale-105;
+  }
+
+  /* Card Styles */
+  .card-school {
+    @apply bg-white rounded-lg p-6 transition-all duration-300;
+    box-shadow: var(--shadow-card);
+  }
+
+  .card-school:hover {
+    @apply scale-105 -translate-y-2;
+    box-shadow: var(--shadow-hero);
+  }
+
+  /* Footer Styles */
+  .footer-school {
+    @apply bg-secondary text-secondary-foreground py-12;
+  }
+
+  /* Animation Classes */
+  .fade-in {
+    @apply animate-[fadeIn_0.6s_ease-out];
+  }
+
+  .slide-up {
+    @apply animate-[slideUp_0.8s_ease-out];
+  }
+
+  .bounce-in {
+    @apply animate-[bounceIn_0.6s_ease-out];
+  }
+}
+
+@layer utilities {
+  .text-gradient {
+    background: var(--gradient-hero);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+}
+
+/* Custom Keyframes */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes bounceIn {
+  0% {
+    opacity: 0;
+    transform: scale(0.3);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.05);
+  }
+  70% {
+    transform: scale(0.9);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
   }
 }
