@@ -72,20 +72,20 @@ const HeroSection = () => {
           <span className="inline-block px-4 py-2 bg-white/20 rounded-full text-sm font-medium mb-4 backdrop-blur-sm">
             {slides[currentSlide].highlight}
           </span>
-          <h1 className="text-5xl md:text-7xl font-bold mb-6 slide-up">
+          <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-7xl font-bold mb-6 slide-up">
             {slides[currentSlide].title}
           </h1>
-          <p className="text-xl md:text-2xl mb-8 max-w-3xl mx-auto opacity-90">
+          <p className="text-lg sm:text-xl md:text-2xl mb-8 max-w-3xl mx-auto opacity-90">
             {slides[currentSlide].subtitle}
           </p>
         </div>
 
         <div className="flex flex-col sm:flex-row gap-4 justify-center bounce-in">
-          <Button size="lg" className="btn-hero">
+          <Button size="lg" className="btn-hero min-h-[3rem] px-6">
             Conheça Nossa Escola
             <ArrowRight className="ml-2 h-5 w-5" />
           </Button>
-          <Button size="lg" variant="outline" className="border-white text-white bg-white/10 hover:bg-white hover:text-primary">
+          <Button size="lg" variant="outline" className="border-white text-white bg-white/10 hover:bg-white hover:text-primary min-h-[3rem] px-6">
             Agendar Visita
           </Button>
         </div>

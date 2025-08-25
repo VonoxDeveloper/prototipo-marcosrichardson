@@ -60,13 +60,13 @@ const AboutSection = () => {
               <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent" />
             </div>
             {/* Floating Stats */}
-            <div className="absolute -bottom-8 -left-8 bg-white rounded-xl shadow-lg p-6 bounce-in">
-              <div className="text-3xl font-bold text-primary">25+</div>
-              <div className="text-sm text-muted-foreground">Anos de Tradição</div>
+            <div className="absolute -bottom-4 -left-4 sm:-bottom-8 sm:-left-8 bg-white rounded-xl shadow-lg p-4 sm:p-6 bounce-in">
+              <div className="text-2xl sm:text-3xl font-bold text-primary">25+</div>
+              <div className="text-xs sm:text-sm text-muted-foreground">Anos de Tradição</div>
             </div>
-            <div className="absolute -top-8 -right-8 bg-primary text-white rounded-xl shadow-lg p-6 bounce-in">
-              <div className="text-3xl font-bold">98%</div>
-              <div className="text-sm opacity-90">Satisfação das Famílias</div>
+            <div className="absolute -top-4 -right-4 sm:-top-8 sm:-right-8 bg-primary text-white rounded-xl shadow-lg p-4 sm:p-6 bounce-in">
+              <div className="text-2xl sm:text-3xl font-bold">98%</div>
+              <div className="text-xs sm:text-sm opacity-90">Satisfação das Famílias</div>
             </div>
           </div>
         </div>
