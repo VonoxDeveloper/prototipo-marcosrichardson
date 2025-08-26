@@ -35,7 +35,7 @@ const Navigation = () => {
           {/* Logo */}
           <Link to="/" className="flex items-center space-x-2">
             <GraduationCap className="h-8 w-8 text-primary" />
-            <span className="text-xl font-bold">Escola Exemplo</span>
+            <span className="text-xl font-bold">protótipo site</span>
           </Link>
 
           {/* Desktop Navigation */}
