@@ -67,8 +67,8 @@ const HeroSection = () => {
       </div>
 
       {/* Content */}
-      <div className="hero-content fade-in">
-        <div className="mb-6">
+      <div className="hero-content fade-in pt-20 sm:pt-24">
+        <div className="mb-4 sm:mb-6">
           <span className="inline-block px-4 py-2 bg-white/20 rounded-full text-sm font-medium mb-4 backdrop-blur-sm">
             {slides[currentSlide].highlight}
           </span>
