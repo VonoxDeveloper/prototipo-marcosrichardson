@@ -69,21 +69,75 @@ function HoverGradientNavBar(): React.JSX.Element {
             <span className="text-xl font-bold">protótipo site</span>
           </Link>
 
-          {/* Desktop Navigation - Simple horizontal layout */}
-          <div className="hidden md:flex items-center space-x-8">
+          {/* Desktop Navigation - With hover animations */}
+          <div className="hidden md:flex items-center space-x-2">
             {menuItems.map((item) => (
-              <Link
-                key={item.label}
-                to={item.href}
-                className={`flex items-center space-x-2 px-3 py-2 rounded-lg text-sm font-medium transition-colors duration-200 ${
-                  location.pathname === item.href
-                    ? 'text-primary bg-primary/10'
-                    : 'text-gray-600 hover:text-gray-900 hover:bg-gray-100 dark:text-gray-300 dark:hover:text-white dark:hover:bg-gray-800'
-                }`}
-              >
-                {item.icon}
-                <span>{item.label}</span>
-              </Link>
+              <motion.div key={item.label} className="relative">
+                <motion.div
+                  className="block rounded-xl overflow-visible group relative"
+                  style={{ perspective: "600px" }}
+                  whileHover="hover"
+                  initial="initial"
+                >
+                  {/* Per-item glow for desktop */}
+                  <motion.div
+                    className="absolute inset-0 z-0 pointer-events-none rounded-xl"
+                    variants={glowVariants}
+                    style={{
+                      background: item.gradient,
+                      opacity: 0,
+                    }}
+                  />
+                  {/* Front-facing */}
+                  <motion.div
+                    variants={itemVariants}
+                    transition={sharedTransition}
+                    style={{
+                      transformStyle: "preserve-3d",
+                      transformOrigin: "center bottom"
+                    }}
+                  >
+                    <Link
+                      to={item.href}
+                      className={`flex items-center space-x-2 px-3 py-2 rounded-xl text-sm font-medium transition-colors duration-200 relative z-10 ${
+                        location.pathname === item.href
+                          ? 'text-primary bg-primary/10'
+                          : 'text-gray-600 dark:text-gray-300 group-hover:text-gray-900 dark:group-hover:text-white'
+                      }`}
+                    >
+                      <span className={`transition-colors duration-300 ${item.iconColor}`}>
+                        {item.icon}
+                      </span>
+                      <span>{item.label}</span>
+                    </Link>
+                  </motion.div>
+                  {/* Back-facing */}
+                  <motion.div
+                    className="absolute inset-0 z-10"
+                    variants={backVariants}
+                    transition={sharedTransition}
+                    style={{
+                      transformStyle: "preserve-3d",
+                      transformOrigin: "center top",
+                      transform: "rotateX(90deg)"
+                    }}
+                  >
+                    <Link
+                      to={item.href}
+                      className={`flex items-center space-x-2 px-3 py-2 rounded-xl text-sm font-medium transition-colors duration-200 ${
+                        location.pathname === item.href
+                          ? 'text-primary bg-primary/10'
+                          : 'text-gray-600 dark:text-gray-300 group-hover:text-gray-900 dark:group-hover:text-white'
+                      }`}
+                    >
+                      <span className={`transition-colors duration-300 ${item.iconColor}`}>
+                        {item.icon}
+                      </span>
+                      <span>{item.label}</span>
+                    </Link>
+                  </motion.div>
+                </motion.div>
+              </motion.div>
             ))}
           </div>
 
