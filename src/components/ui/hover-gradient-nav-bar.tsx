@@ -61,8 +61,8 @@ function HoverGradientNavBar(): React.JSX.Element {
 
   return (
     <div className="fixed top-0 left-0 w-full z-50">
-      <nav className="w-full mx-auto px-4 py-3 bg-white/95 dark:bg-black/80 backdrop-blur-lg border-b border-gray-200/80 dark:border-gray-800/80 shadow-lg">
-        <div className="container mx-auto flex items-center justify-between">
+      <nav className="w-full mx-auto px-4 h-16 bg-white/95 dark:bg-black/80 backdrop-blur-lg border-b border-gray-200/80 dark:border-gray-800/80 shadow-lg">
+        <div className="container mx-auto flex items-center justify-between h-full">
           {/* Logo */}
           <Link to="/" className="flex items-center space-x-2">
             <GraduationCap className="h-8 w-8 text-primary" />

@@ -8,7 +8,7 @@ const Index = () => {
   return (
     <div className="min-h-screen">
       <HoverGradientNavBar />
-      <main className="pt-20">
+      <main className="pt-16">
         <HeroSection />
         <AboutSection />
         <NewsSection />
