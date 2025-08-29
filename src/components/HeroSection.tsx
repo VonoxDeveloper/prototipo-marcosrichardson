@@ -48,7 +48,7 @@ const HeroSection = () => {
   return (
     <section className="hero-section">
       {/* Background Images */}
-      <div className="absolute inset-0">
+      <div className="absolute inset-0 h-screen overflow-hidden">
         {slides.map((slide, index) => (
           <div
             key={index}
@@ -59,15 +59,16 @@ const HeroSection = () => {
             <img
               src={slide.image}
               alt={slide.title}
-              className="w-full h-full object-cover"
+              className="w-full h-full object-cover object-center"
+              style={{ minHeight: '100vh' }}
             />
-            <div className="absolute inset-0 bg-black/40" />
+            <div className="absolute inset-0 bg-black/40"></div>
           </div>
         ))}
       </div>
 
       {/* Content */}
-      <div className="hero-content fade-in pt-20 sm:pt-24">
+      <div className="hero-content fade-in pt-20 sm:pt-24 relative z-10 min-h-screen flex flex-col justify-center">
         <div className="mb-4 sm:mb-6">
           <span className="inline-block px-4 py-2 bg-white/20 rounded-full text-sm font-medium mb-4 backdrop-blur-sm">
             {slides[currentSlide].highlight}
