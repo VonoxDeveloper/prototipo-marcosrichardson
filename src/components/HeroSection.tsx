@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
-import { ChevronLeft, ChevronRight, ArrowRight, Users, BookOpen, Award } from 'lucide-react';
-import { InteractiveHoverButton } from '@/components/ui/interactive-hover-button';
+import { ChevronLeft, ChevronRight, Users, BookOpen, Award } from 'lucide-react';
+import { ShimmerButton } from '@/components/ui/shimmer-button';
 import heroImage from '@/assets/hero-school.jpg';
 import studentsImage from '@/assets/students-learning.jpg';
 import libraryImage from '@/assets/library.jpg';
@@ -81,14 +81,12 @@ const HeroSection = () => {
         </div>
 
         <div className="flex flex-col sm:flex-row gap-4 justify-center bounce-in">
-          <InteractiveHoverButton 
-            text="Conheça Nossa Escola"
-            className="w-auto min-w-fit"
-          />
-          <InteractiveHoverButton 
-            text="Agendar Visita"
-            className="w-auto min-w-fit"
-          />
+          <ShimmerButton className="bg-primary text-primary-foreground">
+            Conheça Nossa Escola
+          </ShimmerButton>
+          <ShimmerButton className="bg-primary text-primary-foreground">
+            Agendar Visita
+          </ShimmerButton>
         </div>
 
         {/* Stats */}

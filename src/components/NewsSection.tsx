@@ -1,5 +1,5 @@
-import { Calendar, ArrowRight } from 'lucide-react';
-import { InteractiveHoverButton } from '@/components/ui/interactive-hover-button';
+import { Calendar } from 'lucide-react';
+import { ShimmerButton } from '@/components/ui/shimmer-button';
 import { Card, CardContent } from '@/components/ui/card';
 import playgroundImage from '@/assets/playground.jpg';
 
@@ -67,20 +67,18 @@ const NewsSection = () => {
                 <p className="text-muted-foreground mb-4 line-clamp-3">
                   {item.summary}
                 </p>
-                <InteractiveHoverButton 
-                  text="Leia mais"
-                  className="w-auto min-w-fit"
-                />
+                <ShimmerButton className="bg-primary text-primary-foreground px-4 py-2 text-sm">
+                  Leia mais
+                </ShimmerButton>
               </CardContent>
             </Card>
           ))}
         </div>
 
         <div className="text-center">
-          <InteractiveHoverButton 
-            text="Ver Todas as Notícias"
-            className="w-auto min-w-fit"
-          />
+          <ShimmerButton className="bg-primary text-primary-foreground">
+            Ver Todas as Notícias
+          </ShimmerButton>
         </div>
       </div>
     </section>
