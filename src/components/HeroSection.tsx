@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { ChevronLeft, ChevronRight, ArrowRight, Users, BookOpen, Award } from 'lucide-react';
-import { Button } from '@/components/ui/button';
+import { InteractiveHoverButton } from '@/components/ui/interactive-hover-button';
 import heroImage from '@/assets/hero-school.jpg';
 import studentsImage from '@/assets/students-learning.jpg';
 import libraryImage from '@/assets/library.jpg';
@@ -81,13 +81,14 @@ const HeroSection = () => {
         </div>
 
         <div className="flex flex-col sm:flex-row gap-4 justify-center bounce-in">
-          <Button size="lg" className="btn-hero min-h-[3rem] px-6">
-            Conheça Nossa Escola
-            <ArrowRight className="ml-2 h-5 w-5" />
-          </Button>
-          <Button size="lg" variant="outline" className="border-white text-white bg-white/10 hover:bg-white hover:text-primary min-h-[3rem] px-6">
-            Agendar Visita
-          </Button>
+          <InteractiveHoverButton 
+            text="Conheça Nossa Escola"
+            className="min-h-[3rem] w-auto px-6"
+          />
+          <InteractiveHoverButton 
+            text="Agendar Visita"
+            className="border-white text-white bg-white/10 hover:bg-white hover:text-primary min-h-[3rem] w-auto px-6"
+          />
         </div>
 
         {/* Stats */}

@@ -1,5 +1,5 @@
 import { Heart, Target, Eye, ArrowRight } from 'lucide-react';
-import { Button } from '@/components/ui/button';
+import { InteractiveHoverButton } from '@/components/ui/interactive-hover-button';
 import { Card, CardContent } from '@/components/ui/card';
 import studentsImage from '@/assets/students-learning.jpg';
 
@@ -42,10 +42,10 @@ const AboutSection = () => {
                 comprometidos, oferecemos um ambiente acolhedor onde cada aluno 
                 pode desenvolver seu potencial máximo.
               </p>
-              <Button size="lg" className="btn-school">
-                Conheça Nossa História
-                <ArrowRight className="ml-2 h-5 w-5" />
-              </Button>
+              <InteractiveHoverButton 
+                text="Conheça Nossa História"
+                className="w-auto px-6"
+              />
             </div>
           </div>
 
