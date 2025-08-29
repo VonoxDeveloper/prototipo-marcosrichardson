@@ -83,11 +83,11 @@ const HeroSection = () => {
         <div className="flex flex-col sm:flex-row gap-4 justify-center bounce-in">
           <InteractiveHoverButton 
             text="Conheça Nossa Escola"
-            className="min-h-[3rem] w-auto px-6"
+            className="bg-primary text-primary-foreground hover:bg-primary/90"
           />
           <InteractiveHoverButton 
             text="Agendar Visita"
-            className="border-white text-white bg-white/10 hover:bg-white hover:text-primary min-h-[3rem] w-auto px-6"
+            className="border-white text-white bg-white/10 hover:bg-white"
           />
         </div>
 
