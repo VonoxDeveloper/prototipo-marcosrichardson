@@ -69,7 +69,7 @@ const NewsSection = () => {
                 </p>
                 <InteractiveHoverButton 
                   text="Leia mais"
-                  className="bg-transparent border-0 text-primary hover:text-primary/80 p-0 px-3 py-1 text-sm"
+                  className="w-auto min-w-fit"
                 />
               </CardContent>
             </Card>
@@ -79,7 +79,7 @@ const NewsSection = () => {
         <div className="text-center">
           <InteractiveHoverButton 
             text="Ver Todas as Notícias"
-            className="bg-primary text-primary-foreground hover:bg-primary/90"
+            className="w-auto min-w-fit"
           />
         </div>
       </div>

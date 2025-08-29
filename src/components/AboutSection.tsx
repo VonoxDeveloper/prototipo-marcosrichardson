@@ -44,7 +44,7 @@ const AboutSection = () => {
               </p>
               <InteractiveHoverButton 
                 text="Conheça Nossa História"
-                className="bg-primary text-primary-foreground hover:bg-primary/90"
+                className="w-auto min-w-fit"
               />
             </div>
           </div>
