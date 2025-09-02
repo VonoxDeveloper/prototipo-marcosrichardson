@@ -152,82 +152,97 @@ function HoverGradientNavBar(): React.JSX.Element {
           </div>
         </div>
 
-        {/* Mobile Navigation with animations */}
+        {/* Mobile Navigation Fullscreen Overlay */}
         {isOpen && (
-          <div className="md:hidden mt-4 border-t border-gray-200 dark:border-gray-800 bg-white/95 dark:bg-black/90 backdrop-blur-lg">
-            <div className="py-4 space-y-2">
-              {menuItems.map((item: HoverGradientMenuItem) => (
-                <motion.div key={item.label} className="relative">
-                  <motion.div
-                    className="block rounded-xl overflow-visible group relative"
-                    style={{ perspective: "600px" }}
-                    whileHover="hover"
-                    initial="initial"
+          <motion.div
+            initial={{ opacity: 0, y: -20 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -20 }}
+            transition={{ duration: 0.3, ease: [0.4, 0, 0.2, 1] }}
+            className="fixed inset-0 top-16 z-40 md:hidden bg-white/95 dark:bg-black/95 backdrop-blur-xl"
+          >
+            <div className="h-full overflow-y-auto">
+              <div className="container mx-auto px-4 py-8">
+                <div className="space-y-6">
+                  {menuItems.map((item: HoverGradientMenuItem, index) => (
+                    <motion.div 
+                      key={item.label} 
+                      initial={{ opacity: 0, x: -20 }}
+                      animate={{ opacity: 1, x: 0 }}
+                      transition={{ 
+                        duration: 0.3, 
+                        delay: index * 0.1,
+                        ease: [0.4, 0, 0.2, 1]
+                      }}
+                      className="relative"
+                    >
+                      <motion.div
+                        className="block rounded-2xl overflow-visible group relative"
+                        whileHover={{ scale: 1.02 }}
+                        whileTap={{ scale: 0.98 }}
+                        transition={{ type: "spring", stiffness: 400, damping: 25 }}
+                      >
+                        {/* Gradient background on hover */}
+                        <motion.div
+                          className="absolute inset-0 z-0 pointer-events-none rounded-2xl"
+                          initial={{ opacity: 0, scale: 0.8 }}
+                          whileHover={{ opacity: 1, scale: 1 }}
+                          transition={{ duration: 0.3 }}
+                          style={{ background: item.gradient }}
+                        />
+                        
+                        <Link
+                          to={item.href}
+                          onClick={() => setIsOpen(false)}
+                          className={`flex items-center space-x-4 px-6 py-4 rounded-2xl relative z-10 transition-all duration-300 text-lg font-medium ${
+                            location.pathname === item.href
+                              ? 'text-primary bg-primary/10 shadow-lg'
+                              : 'text-gray-700 dark:text-gray-200 hover:text-gray-900 dark:hover:text-white hover:bg-gray-50 dark:hover:bg-gray-800/50'
+                          }`}
+                        >
+                          <motion.span 
+                            className={`transition-colors duration-300 ${item.iconColor}`}
+                            whileHover={{ rotate: [0, -10, 10, 0] }}
+                            transition={{ duration: 0.5 }}
+                          >
+                            {item.icon}
+                          </motion.span>
+                          <span>{item.label}</span>
+                          
+                          {/* Arrow indicator for active item */}
+                          {location.pathname === item.href && (
+                            <motion.div
+                              initial={{ opacity: 0, x: -10 }}
+                              animate={{ opacity: 1, x: 0 }}
+                              className="ml-auto"
+                            >
+                              <div className="w-2 h-2 rounded-full bg-primary"></div>
+                            </motion.div>
+                          )}
+                        </Link>
+                      </motion.div>
+                    </motion.div>
+                  ))}
+                </div>
+                
+                {/* Contact CTA at bottom */}
+                <motion.div
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.3, delay: 0.5 }}
+                  className="mt-12 pt-8 border-t border-gray-200 dark:border-gray-700"
+                >
+                  <Link
+                    to="/contato"
+                    onClick={() => setIsOpen(false)}
+                    className="block w-full text-center bg-primary text-primary-foreground px-6 py-4 rounded-2xl font-semibold text-lg hover:bg-primary/90 transition-colors duration-300 shadow-lg"
                   >
-                    {/* Per-item glow for mobile */}
-                    <motion.div
-                      className="absolute inset-0 z-0 pointer-events-none rounded-xl"
-                      variants={glowVariants}
-                      style={{
-                        background: item.gradient,
-                        opacity: 0,
-                      }}
-                    />
-                    {/* Front-facing */}
-                    <motion.div
-                      variants={itemVariants}
-                      transition={sharedTransition}
-                      style={{
-                        transformStyle: "preserve-3d",
-                        transformOrigin: "center bottom"
-                      }}
-                    >
-                      <Link
-                        to={item.href}
-                        onClick={() => setIsOpen(false)}
-                        className={`flex items-center space-x-3 px-4 py-3 rounded-xl relative z-10 transition-colors ${
-                          location.pathname === item.href
-                            ? 'text-primary bg-primary/10'
-                            : 'text-gray-600 dark:text-gray-300 group-hover:text-gray-900 dark:group-hover:text-white'
-                        }`}
-                      >
-                        <span className={`transition-colors duration-300 ${item.iconColor}`}>
-                          {item.icon}
-                        </span>
-                        <span className="font-medium">{item.label}</span>
-                      </Link>
-                    </motion.div>
-                    {/* Back-facing */}
-                    <motion.div
-                      className="absolute inset-0 z-10"
-                      variants={backVariants}
-                      transition={sharedTransition}
-                      style={{
-                        transformStyle: "preserve-3d",
-                        transformOrigin: "center top",
-                        transform: "rotateX(90deg)"
-                      }}
-                    >
-                      <Link
-                        to={item.href}
-                        onClick={() => setIsOpen(false)}
-                        className={`flex items-center space-x-3 px-4 py-3 rounded-xl transition-colors ${
-                          location.pathname === item.href
-                            ? 'text-primary bg-primary/10'
-                            : 'text-gray-600 dark:text-gray-300 group-hover:text-gray-900 dark:group-hover:text-white'
-                        }`}
-                      >
-                        <span className={`transition-colors duration-300 ${item.iconColor}`}>
-                          {item.icon}
-                        </span>
-                        <span className="font-medium">{item.label}</span>
-                      </Link>
-                    </motion.div>
-                  </motion.div>
+                    Agendar Visita
+                  </Link>
                 </motion.div>
-              ))}
+              </div>
             </div>
-          </div>
+          </motion.div>
         )}
       </nav>
     </div>
