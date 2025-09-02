@@ -257,44 +257,6 @@ const Sobre = () => {
           </div>
         </section>
 
-        {/* Awards and Partners */}
-        <section className="py-20 bg-muted/30">
-          <div className="container mx-auto px-4">
-            <div className="text-center mb-16 slide-up">
-              <h2 className="text-4xl font-bold mb-6">Reconhecimentos e Parcerias</h2>
-              <p className="text-xl text-muted-foreground">
-                Premiações e colaborações que fortalecem nossa missão educacional
-              </p>
-            </div>
-
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
-              <div className="text-center fade-in">
-                <h3 className="text-2xl font-semibold mb-8">Prêmios e Reconhecimentos</h3>
-                <Card className="p-8 hover-scale">
-                  <Award className="h-16 w-16 text-primary mx-auto mb-4" />
-                  <h4 className="text-xl font-semibold mb-2">Prêmio Os Mais Amados 2025</h4>
-                  <p className="text-muted-foreground">Reconhecimento pela excelência em educação</p>
-                </Card>
-              </div>
-
-              <div className="text-center fade-in" style={{ animationDelay: '0.2s' }}>
-                <h3 className="text-2xl font-semibold mb-8">Parcerias Internacionais</h3>
-                <div className="space-y-6">
-                  <Card className="p-6 hover-scale">
-                    <MapPin className="h-12 w-12 text-primary mx-auto mb-3" />
-                    <h4 className="text-lg font-semibold mb-1">Ontario Virtual School</h4>
-                    <p className="text-muted-foreground text-sm">Canadá</p>
-                  </Card>
-                  <Card className="p-6 hover-scale">
-                    <MapPin className="h-12 w-12 text-primary mx-auto mb-3" />
-                    <h4 className="text-lg font-semibold mb-1">MAX e-ducation</h4>
-                    <p className="text-muted-foreground text-sm">Parceria Tecnológica</p>
-                  </Card>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
 
         {/* CTA Section */}
         <section className="py-20 bg-primary text-white">
