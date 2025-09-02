@@ -156,92 +156,97 @@ function HoverGradientNavBar(): React.JSX.Element {
         <AnimatePresence>
           {isOpen && (
             <motion.div
-              initial={{ opacity: 0, y: -20 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -20 }}
-              transition={{ duration: 0.3, ease: [0.4, 0, 0.2, 1] }}
-              className="fixed inset-0 top-16 z-40 md:hidden bg-white/95 dark:bg-black/95 backdrop-blur-xl"
+              initial={{ opacity: 0, scale: 0.95 }}
+              animate={{ opacity: 1, scale: 1 }}
+              exit={{ opacity: 0, scale: 0.95 }}
+              transition={{ duration: 0.2, ease: [0.4, 0, 0.2, 1] }}
+              className="fixed inset-0 top-16 z-50 md:hidden bg-white/98 dark:bg-black/98 backdrop-blur-xl"
             >
-              <div className="h-full overflow-y-auto">
-                <div className="container mx-auto px-4 py-8">
-                  <div className="space-y-6">
-                    {menuItems.map((item: HoverGradientMenuItem, index) => (
-                      <motion.div 
-                        key={item.label} 
-                        initial={{ opacity: 0, x: -20 }}
-                        animate={{ opacity: 1, x: 0 }}
-                        transition={{ 
-                          duration: 0.3, 
-                          delay: index * 0.1,
-                          ease: [0.4, 0, 0.2, 1]
-                        }}
-                        className="relative"
-                      >
-                        <motion.div
-                          className="block rounded-2xl overflow-visible group relative"
-                          whileHover={{ scale: 1.02 }}
-                          whileTap={{ scale: 0.98 }}
-                          transition={{ type: "spring", stiffness: 400, damping: 25 }}
+              {/* Close overlay when clicking background */}
+              <div 
+                className="absolute inset-0"
+                onClick={() => setIsOpen(false)}
+              />
+              
+              <div className="relative h-full flex flex-col">
+                {/* Menu items container with better scrolling */}
+                <div className="flex-1 overflow-y-auto overscroll-contain">
+                  <div className="min-h-full px-6 py-8 sm:px-8">
+                    <div className="space-y-2">
+                      {menuItems.map((item: HoverGradientMenuItem, index) => (
+                        <motion.div 
+                          key={item.label} 
+                          initial={{ opacity: 0, x: -30 }}
+                          animate={{ opacity: 1, x: 0 }}
+                          transition={{ 
+                            duration: 0.25, 
+                            delay: index * 0.05,
+                            ease: [0.4, 0, 0.2, 1]
+                          }}
+                          className="relative"
                         >
-                          {/* Gradient background on hover */}
                           <motion.div
-                            className="absolute inset-0 z-0 pointer-events-none rounded-2xl"
-                            initial={{ opacity: 0, scale: 0.8 }}
-                            whileHover={{ opacity: 1, scale: 1 }}
-                            transition={{ duration: 0.3 }}
-                            style={{ background: item.gradient }}
-                          />
-                          
-                          <Link
-                            to={item.href}
-                            onClick={() => setIsOpen(false)}
-                            className={`flex items-center space-x-4 px-6 py-4 rounded-2xl relative z-10 transition-all duration-300 text-lg font-medium ${
-                              location.pathname === item.href
-                                ? 'text-primary bg-primary/10 shadow-lg'
-                                : 'text-gray-700 dark:text-gray-200 hover:text-gray-900 dark:hover:text-white hover:bg-gray-50 dark:hover:bg-gray-800/50'
-                            }`}
+                            className="block rounded-xl overflow-hidden relative"
+                            whileTap={{ scale: 0.98 }}
+                            transition={{ type: "spring", stiffness: 500, damping: 30 }}
                           >
-                            <motion.span 
-                              className={`transition-colors duration-300 ${item.iconColor}`}
-                              whileHover={{ rotate: [0, -10, 10, 0] }}
-                              transition={{ duration: 0.5 }}
-                            >
-                              {item.icon}
-                            </motion.span>
-                            <span>{item.label}</span>
+                            {/* Gradient background on touch/hover */}
+                            <motion.div
+                              className="absolute inset-0 z-0 pointer-events-none rounded-xl opacity-0"
+                              whileTap={{ opacity: 0.1 }}
+                              style={{ background: item.gradient }}
+                            />
                             
-                            {/* Arrow indicator for active item */}
-                            {location.pathname === item.href && (
-                              <motion.div
-                                initial={{ opacity: 0, x: -10 }}
-                                animate={{ opacity: 1, x: 0 }}
-                                className="ml-auto"
-                              >
-                                <div className="w-2 h-2 rounded-full bg-primary"></div>
-                              </motion.div>
-                            )}
-                          </Link>
+                            <Link
+                              to={item.href}
+                              onClick={() => setIsOpen(false)}
+                              className={`flex items-center space-x-4 px-5 py-4 rounded-xl relative z-10 transition-all duration-200 text-base font-medium active:bg-gray-100 dark:active:bg-gray-800 ${
+                                location.pathname === item.href
+                                  ? 'text-primary bg-primary/10 shadow-sm border border-primary/20'
+                                  : 'text-gray-700 dark:text-gray-200'
+                              }`}
+                            >
+                              <span className={`transition-colors duration-200 flex-shrink-0 ${item.iconColor}`}>
+                                {item.icon}
+                              </span>
+                              <span className="flex-1">{item.label}</span>
+                              
+                              {/* Arrow indicator for active item */}
+                              {location.pathname === item.href && (
+                                <motion.div
+                                  initial={{ opacity: 0, scale: 0 }}
+                                  animate={{ opacity: 1, scale: 1 }}
+                                  className="flex-shrink-0"
+                                >
+                                  <div className="w-2 h-2 rounded-full bg-primary"></div>
+                                </motion.div>
+                              )}
+                            </Link>
+                          </motion.div>
                         </motion.div>
-                      </motion.div>
-                    ))}
+                      ))}
+                    </div>
                   </div>
-                  
-                  {/* Contact CTA at bottom */}
-                  <motion.div
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.3, delay: 0.5 }}
-                    className="mt-12 pt-8 border-t border-gray-200 dark:border-gray-700"
-                  >
-                    <Link
-                      to="/contato"
-                      onClick={() => setIsOpen(false)}
-                      className="block w-full text-center bg-primary text-primary-foreground px-6 py-4 rounded-2xl font-semibold text-lg hover:bg-primary/90 transition-colors duration-300 shadow-lg"
-                    >
-                      Agendar Visita
-                    </Link>
-                  </motion.div>
                 </div>
+                
+                {/* Fixed CTA button at bottom */}
+                <motion.div
+                  initial={{ opacity: 0, y: 50 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.3, delay: 0.3 }}
+                  className="flex-shrink-0 p-6 sm:p-8 border-t border-gray-200/60 dark:border-gray-700/60 bg-white/80 dark:bg-black/80 backdrop-blur-sm"
+                >
+                  <Link
+                    to="/contato"
+                    onClick={() => setIsOpen(false)}
+                    className="block w-full text-center bg-gradient-to-r from-primary to-primary/90 text-primary-foreground px-6 py-4 rounded-xl font-semibold text-base shadow-lg hover:shadow-xl active:scale-[0.98] transition-all duration-200"
+                  >
+                    Agendar Visita
+                  </Link>
+                  
+                  {/* Safe area for devices with home indicator */}
+                  <div className="h-safe-area-inset-bottom" />
+                </motion.div>
               </div>
             </motion.div>
           )}
