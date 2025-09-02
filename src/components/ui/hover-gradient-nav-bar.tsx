@@ -154,7 +154,7 @@ function HoverGradientNavBar(): React.JSX.Element {
 
         {/* Mobile Navigation with animations */}
         {isOpen && (
-          <div className="md:hidden mt-4 border-t border-gray-200 dark:border-gray-800">
+          <div className="md:hidden mt-4 border-t border-gray-200 dark:border-gray-800 bg-white/95 dark:bg-black/90 backdrop-blur-lg">
             <div className="py-4 space-y-2">
               {menuItems.map((item: HoverGradientMenuItem) => (
                 <motion.div key={item.label} className="relative">
