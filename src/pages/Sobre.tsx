@@ -9,7 +9,7 @@ import playgroundImage from '@/assets/playground.jpg';
 
 const Sobre = () => {
   const timeline = [
-    { year: "1916", event: "Fundação do Colégio Franco" },
+    { year: "1916", event: "Fundação do Colégio Prototipo" },
     { year: "1960", event: "Expansão dos segmentos de ensino" },
     { year: "2000", event: "Início dos projetos internacionais" },
     { year: "2020", event: "Integração tecnológica e novas estruturas" }
@@ -66,14 +66,14 @@ const Sobre = () => {
         <div className="absolute inset-0">
           <img
             src={heroImage}
-            alt="Colégio Franco"
+            alt="Colégio Prototipo"
             className="w-full h-full object-cover"
           />
           <div className="absolute inset-0 bg-black/50" />
         </div>
         <div className="relative z-10 text-center text-white px-4">
           <h1 className="text-5xl md:text-6xl font-bold mb-6 slide-up">
-            Sobre o <span className="text-gradient">Colégio Franco</span>
+            Sobre o <span className="text-gradient">Colégio Prototipo</span>
           </h1>
           <p className="text-xl md:text-2xl max-w-3xl mx-auto fade-in">
             Educação de excelência há mais de 100 anos
@@ -88,7 +88,7 @@ const Sobre = () => {
             <div className="text-center mb-16 slide-up">
               <h2 className="text-4xl font-bold mb-6">Nossa História</h2>
               <p className="text-xl text-muted-foreground max-w-4xl mx-auto">
-                O Colégio Franco foi fundado há mais de 100 anos no bairro das Laranjeiras, Rio de Janeiro. 
+                O Colégio Prototipo foi fundado há mais de 100 anos no bairro das Laranjeiras, Rio de Janeiro. 
                 Desde então, tornou-se referência em formação integral, alicerçado em valores éticos e excelência acadêmica.
               </p>
             </div>
@@ -302,7 +302,7 @@ const Sobre = () => {
             <div className="max-w-3xl mx-auto slide-up">
               <h2 className="text-4xl font-bold mb-6">Venha nos conhecer!</h2>
               <p className="text-xl mb-8 opacity-90">
-                Agende uma visita ou faça o tour virtual para viver de perto a experiência Franco.
+                Agende uma visita ou faça o tour virtual para viver de perto a experiência Prototipo.
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 <ShimmerButton className="bg-white text-primary hover:bg-white/90">

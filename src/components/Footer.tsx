@@ -10,7 +10,7 @@ const Footer = () => {
           <div className="space-y-4">
             <div className="flex items-center space-x-2">
               <GraduationCap className="h-8 w-8 text-white" />
-              <span className="text-xl font-bold text-white">protótipo site</span>
+              <span className="text-xl font-bold text-white">Colégio Prototipo</span>
             </div>
             <p className="text-secondary-foreground/80">
               Formando cidadãos conscientes e preparados para o futuro.
@@ -104,7 +104,7 @@ const Footer = () => {
 
         <div className="mt-8 pt-8 border-t border-white/20 text-center">
           <p className="text-secondary-foreground/80 text-sm">
-            © 2024 protótipo site. Todos os direitos reservados.
+            © 2024 Colégio Prototipo. Todos os direitos reservados.
           </p>
         </div>
       </div>
