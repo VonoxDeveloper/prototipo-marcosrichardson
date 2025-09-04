@@ -5,6 +5,7 @@ import { Button } from '@/components/ui/button';
 import { InteractiveHoverButton } from '@/components/ui/interactive-hover-button';
 import { BookOpen, Users, Lightbulb, Network, Heart } from 'lucide-react';
 import studentsLearning from '@/assets/students-learning.jpg';
+import heroImage from '@/assets/hero-school.jpg';
 
 const pillars = [
   {
@@ -40,21 +41,28 @@ const Proposta = () => {
       <HoverGradientNavBar />
       
       {/* Hero Section */}
-      <section className="relative pt-20 pb-16 bg-gradient-to-br from-primary/5 via-background to-secondary/5">
-        <div className="container mx-auto px-4">
-          <div className="max-w-4xl mx-auto text-center">
-            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold mb-6 bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">
-              Nossa Proposta Pedagógica
-            </h1>
-            <p className="text-lg sm:text-xl text-muted-foreground leading-relaxed">
-              Nossa proposta pedagógica valoriza o desenvolvimento integral do estudante, unindo excelência acadêmica, valores humanos e preparo para os desafios do futuro.
-            </p>
-          </div>
+      <section className="relative h-[60vh] flex items-center justify-center overflow-hidden">
+        <div className="absolute inset-0">
+          <img
+            src={heroImage}
+            alt="Nossa Proposta Pedagógica - Colégio Prototipo"
+            className="w-full h-full object-cover"
+          />
+          <div className="absolute inset-0 bg-black/50" />
+        </div>
+        <div className="relative z-10 text-center text-white px-4">
+          <h1 className="text-5xl md:text-6xl font-bold mb-6 slide-up">
+            Nossa <span className="text-gradient">Proposta Pedagógica</span>
+          </h1>
+          <p className="text-xl md:text-2xl max-w-3xl mx-auto fade-in">
+            Desenvolvimento integral do estudante, unindo excelência acadêmica, valores humanos e preparo para os desafios do futuro
+          </p>
         </div>
       </section>
 
-      {/* Pillars Section */}
-      <section className="py-16 sm:py-24">
+      <main className="pt-16">
+        {/* Pillars Section */}
+        <section className="py-16 sm:py-24">
         <div className="container mx-auto px-4">
           <div className="text-center mb-16">
             <h2 className="text-3xl sm:text-4xl font-bold mb-4">
@@ -133,6 +141,7 @@ const Proposta = () => {
           </div>
         </div>
       </section>
+      </main>
 
       <Footer />
     </div>
