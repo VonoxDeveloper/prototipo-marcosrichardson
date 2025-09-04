@@ -4,6 +4,9 @@ import { Card, CardContent } from '@/components/ui/card';
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from '@/components/ui/carousel';
 import { Button } from '@/components/ui/button';
 import { Quote, Star, Heart, Users } from 'lucide-react';
+import children1 from '@/assets/children-1.jpg';
+import children2 from '@/assets/children-2.jpg';
+import children3 from '@/assets/children-3.jpg';
 
 const testimonials = [
   {
@@ -78,8 +81,46 @@ const Depoimentos = () => {
           </div>
         </section>
 
+        {/* Photo Gallery Section */}
+        <section className="py-16 bg-white">
+          <div className="container mx-auto px-4">
+            <div className="text-center mb-12">
+              <h2 className="text-3xl sm:text-4xl font-bold mb-4">
+                Momentos especiais
+              </h2>
+              <p className="text-lg text-muted-foreground">
+                Veja a alegria e o aprendizado no dia a dia dos nossos alunos
+              </p>
+            </div>
+            
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-6xl mx-auto">
+              <div className="group overflow-hidden rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300">
+                <img 
+                  src={children1} 
+                  alt="Crianças felizes brincando e aprendendo na escola"
+                  className="w-full h-80 object-cover group-hover:scale-105 transition-transform duration-300"
+                />
+              </div>
+              <div className="group overflow-hidden rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300">
+                <img 
+                  src={children2} 
+                  alt="Estudantes participando de atividades educativas em grupo"
+                  className="w-full h-80 object-cover group-hover:scale-105 transition-transform duration-300"
+                />
+              </div>
+              <div className="group overflow-hidden rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300">
+                <img 
+                  src={children3} 
+                  alt="Momentos de descoberta e criatividade dos alunos"
+                  className="w-full h-80 object-cover group-hover:scale-105 transition-transform duration-300"
+                />
+              </div>
+            </div>
+          </div>
+        </section>
+
         {/* Stats Section */}
-        <section className="py-12 bg-white">
+        <section className="py-12 bg-muted/20">
           <div className="container mx-auto px-4">
             <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
               <div className="space-y-2">
@@ -103,7 +144,7 @@ const Depoimentos = () => {
         </section>
 
         {/* Testimonials Section */}
-        <section className="py-16 sm:py-24 bg-muted/20">
+        <section className="py-16 sm:py-24 bg-white">
           <div className="container mx-auto px-4">
             <div className="text-center mb-12">
               <h2 className="text-3xl sm:text-4xl font-bold mb-4">
