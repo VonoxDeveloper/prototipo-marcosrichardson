@@ -3,12 +3,12 @@ import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import HoverGradientNavBar from "./components/ui/hover-gradient-nav-bar";
 import Index from "./pages/Index";
 import Sobre from "./pages/Sobre";
 import Proposta from "./pages/Proposta";
 import Segmentos from "./pages/Segmentos";
 import VidaEscolar from "./pages/VidaEscolar";
-
 import Depoimentos from "./pages/Depoimentos";
 import Contato from "./pages/Contato";
 import NotFound from "./pages/NotFound";
@@ -21,13 +21,13 @@ const App = () => (
       <Toaster />
       <Sonner />
       <BrowserRouter>
+        <HoverGradientNavBar />
         <Routes>
           <Route path="/" element={<Index />} />
           <Route path="/sobre" element={<Sobre />} />
           <Route path="/proposta" element={<Proposta />} />
           <Route path="/segmentos" element={<Segmentos />} />
           <Route path="/vida-escolar" element={<VidaEscolar />} />
-          
           <Route path="/depoimentos" element={<Depoimentos />} />
           <Route path="/contato" element={<Contato />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
