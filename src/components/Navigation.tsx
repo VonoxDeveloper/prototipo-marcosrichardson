@@ -14,7 +14,7 @@ const Navigation = () => {
     { name: 'Proposta Pedagógica', path: '/proposta' },
     { name: 'Segmentos', path: '/segmentos' },
     { name: 'Vida Escolar', path: '/vida-escolar' },
-    { name: 'Notícias', path: '/noticias' },
+    
     { name: 'Depoimentos', path: '/depoimentos' },
     { name: 'Contato', path: '/contato' },
   ];

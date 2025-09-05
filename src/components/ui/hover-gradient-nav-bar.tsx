@@ -20,7 +20,7 @@ const menuItems: HoverGradientMenuItem[] = [
   { icon: <Users className="h-5 w-5" />, label: "Proposta", href: "/proposta", gradient: "radial-gradient(circle, rgba(147,51,234,0.15) 0%, rgba(126,34,206,0.06) 50%, rgba(88,28,135,0) 100%)", iconColor: "group-hover:text-purple-500 dark:group-hover:text-purple-400" },
   { icon: <GraduationCap className="h-5 w-5" />, label: "Segmentos", href: "/segmentos", gradient: "radial-gradient(circle, rgba(249,115,22,0.15) 0%, rgba(234,88,12,0.06) 50%, rgba(194,65,12,0) 100%)", iconColor: "group-hover:text-orange-500 dark:group-hover:text-orange-400" },
   { icon: <Calendar className="h-5 w-5" />, label: "Vida Escolar", href: "/vida-escolar", gradient: "radial-gradient(circle, rgba(20,184,166,0.15) 0%, rgba(13,148,136,0.06) 50%, rgba(15,118,110,0) 100%)", iconColor: "group-hover:text-teal-500 dark:group-hover:text-teal-400" },
-  { icon: <Newspaper className="h-5 w-5" />, label: "Notícias", href: "/noticias", gradient: "radial-gradient(circle, rgba(239,68,68,0.15) 0%, rgba(220,38,38,0.06) 50%, rgba(185,28,28,0) 100%)", iconColor: "group-hover:text-red-500 dark:group-hover:text-red-400" },
+  
   { icon: <MessageSquare className="h-5 w-5" />, label: "Depoimentos", href: "/depoimentos", gradient: "radial-gradient(circle, rgba(161,98,7,0.15) 0%, rgba(133,77,14,0.06) 50%, rgba(100,62,8,0) 100%)", iconColor: "group-hover:text-amber-600 dark:group-hover:text-amber-400" },
   { icon: <Phone className="h-5 w-5" />, label: "Contato", href: "/contato", gradient: "radial-gradient(circle, rgba(168,85,247,0.15) 0%, rgba(147,51,234,0.06) 50%, rgba(124,58,237,0) 100%)", iconColor: "group-hover:text-violet-500 dark:group-hover:text-violet-400" },
 ];
