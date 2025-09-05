@@ -1,4 +1,3 @@
-import HoverGradientNavBar from '@/components/ui/hover-gradient-nav-bar';
 import Footer from '@/components/Footer';
 import { Card, CardContent } from '@/components/ui/card';
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from '@/components/ui/carousel';
@@ -63,7 +62,6 @@ const testimonials = [
 const Depoimentos = () => {
   return (
     <div className="min-h-screen">
-      <HoverGradientNavBar />
       <main className="pt-16">
         {/* Hero Image Section */}
         <section className="relative h-[50vh] md:h-[60vh] overflow-hidden">

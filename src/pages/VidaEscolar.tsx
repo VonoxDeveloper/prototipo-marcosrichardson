@@ -1,4 +1,3 @@
-import HoverGradientNavBar from '@/components/ui/hover-gradient-nav-bar';
 import Footer from '@/components/Footer';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { ShimmerButton } from '@/components/ui/shimmer-button';
@@ -58,7 +57,6 @@ const VidaEscolar = () => {
 
   return (
     <div className="min-h-screen">
-      <HoverGradientNavBar />
       <main className="pt-16">
         {/* Hero Image Section */}
         <section className="relative h-[50vh] md:h-[60vh] overflow-hidden">
