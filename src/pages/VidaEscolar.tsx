@@ -3,6 +3,7 @@ import Footer from '@/components/Footer';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { ShimmerButton } from '@/components/ui/shimmer-button';
 import { Users, Calendar, Building, Lightbulb, Heart, BookOpen, Palette, Trophy } from 'lucide-react';
+import heroSchool from '@/assets/hero-school.jpg';
 
 const VidaEscolar = () => {
   const lifePillars = [
@@ -59,6 +60,26 @@ const VidaEscolar = () => {
     <div className="min-h-screen">
       <HoverGradientNavBar />
       <main className="pt-16">
+        {/* Hero Image Section */}
+        <section className="relative h-[50vh] md:h-[60vh] overflow-hidden">
+          <img 
+            src={heroSchool} 
+            alt="Vida escolar - estudantes em atividades educativas e sociais"
+            className="w-full h-full object-cover"
+          />
+          <div className="absolute inset-0 bg-gradient-to-r from-black/50 to-black/30" />
+          <div className="absolute inset-0 flex items-center justify-center">
+            <div className="text-center text-white px-4">
+              <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold mb-4">
+                Vida Escolar
+              </h1>
+              <p className="text-lg sm:text-xl max-w-2xl">
+                Mais do que ensino, uma experiência de vida
+              </p>
+            </div>
+          </div>
+        </section>
+
         {/* Hero Section */}
         <section className="bg-gradient-to-br from-primary/10 via-secondary/5 to-accent/10 py-16 sm:py-24">
           <div className="container mx-auto px-4 text-center">

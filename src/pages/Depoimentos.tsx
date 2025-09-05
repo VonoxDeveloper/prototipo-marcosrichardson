@@ -7,6 +7,7 @@ import { Quote, Star, Heart, Users } from 'lucide-react';
 import children1 from '@/assets/children-1.jpg';
 import children2 from '@/assets/children-2.jpg';
 import children3 from '@/assets/children-3.jpg';
+import heroSchool from '@/assets/hero-school.jpg';
 
 const testimonials = [
   {
@@ -64,6 +65,26 @@ const Depoimentos = () => {
     <div className="min-h-screen">
       <HoverGradientNavBar />
       <main className="pt-16">
+        {/* Hero Image Section */}
+        <section className="relative h-[50vh] md:h-[60vh] overflow-hidden">
+          <img 
+            src={heroSchool} 
+            alt="Vista da escola - ambiente educacional moderno e acolhedor"
+            className="w-full h-full object-cover"
+          />
+          <div className="absolute inset-0 bg-gradient-to-r from-black/50 to-black/30" />
+          <div className="absolute inset-0 flex items-center justify-center">
+            <div className="text-center text-white px-4">
+              <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold mb-4">
+                Depoimentos
+              </h1>
+              <p className="text-lg sm:text-xl max-w-2xl">
+                O que dizem sobre nós
+              </p>
+            </div>
+          </div>
+        </section>
+
         {/* Hero Section */}
         <section className="bg-gradient-to-br from-primary/5 to-secondary/5 py-16 sm:py-24">
           <div className="container mx-auto px-4 text-center">
