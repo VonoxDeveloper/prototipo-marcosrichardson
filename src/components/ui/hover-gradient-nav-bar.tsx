@@ -1,240 +1,190 @@
-'use client'
-import React, { useState } from 'react';
-import { motion, Variants, AnimatePresence } from 'framer-motion';
-import { Home, BookOpen, Users, Calendar, Newspaper, MessageSquare, Phone, GraduationCap, Menu, X } from 'lucide-react';
+import React, { useState, useEffect, useRef } from 'react';
+import { GraduationCap, Menu, X } from 'lucide-react';
 import { Link, useLocation } from 'react-router-dom';
 
-// --- HoverGradientNavBar Component ---
-
-interface HoverGradientMenuItem {
-  icon: React.ReactNode;
+interface MenuItem {
   label: string;
   href: string;
-  gradient: string;
-  iconColor: string;
 }
 
-const menuItems: HoverGradientMenuItem[] = [
-  { icon: <Home className="h-5 w-5" />, label: "Início", href: "/", gradient: "radial-gradient(circle, rgba(59,130,246,0.15) 0%, rgba(37,99,235,0.06) 50%, rgba(29,78,216,0) 100%)", iconColor: "group-hover:text-blue-500 dark:group-hover:text-blue-400" },
-  { icon: <BookOpen className="h-5 w-5" />, label: "Sobre", href: "/sobre", gradient: "radial-gradient(circle, rgba(34,197,94,0.15) 0%, rgba(22,163,74,0.06) 50%, rgba(21,128,61,0) 100%)", iconColor: "group-hover:text-green-500 dark:group-hover:text-green-400" },
-  { icon: <Users className="h-5 w-5" />, label: "Proposta", href: "/proposta", gradient: "radial-gradient(circle, rgba(147,51,234,0.15) 0%, rgba(126,34,206,0.06) 50%, rgba(88,28,135,0) 100%)", iconColor: "group-hover:text-purple-500 dark:group-hover:text-purple-400" },
-  { icon: <GraduationCap className="h-5 w-5" />, label: "Segmentos", href: "/segmentos", gradient: "radial-gradient(circle, rgba(249,115,22,0.15) 0%, rgba(234,88,12,0.06) 50%, rgba(194,65,12,0) 100%)", iconColor: "group-hover:text-orange-500 dark:group-hover:text-orange-400" },
-  { icon: <Calendar className="h-5 w-5" />, label: "Vida Escolar", href: "/vida-escolar", gradient: "radial-gradient(circle, rgba(20,184,166,0.15) 0%, rgba(13,148,136,0.06) 50%, rgba(15,118,110,0) 100%)", iconColor: "group-hover:text-teal-500 dark:group-hover:text-teal-400" },
-  { icon: <MessageSquare className="h-5 w-5" />, label: "Depoimentos", href: "/depoimentos", gradient: "radial-gradient(circle, rgba(161,98,7,0.15) 0%, rgba(133,77,14,0.06) 50%, rgba(100,62,8,0) 100%)", iconColor: "group-hover:text-amber-600 dark:group-hover:text-amber-400" },
-  { icon: <Phone className="h-5 w-5" />, label: "Contato", href: "/contato", gradient: "radial-gradient(circle, rgba(168,85,247,0.15) 0%, rgba(147,51,234,0.06) 50%, rgba(124,58,237,0) 100%)", iconColor: "group-hover:text-violet-500 dark:group-hover:text-violet-400" },
+const menuItems: MenuItem[] = [
+  { label: "Início", href: "/" },
+  { label: "Sobre", href: "/sobre" },
+  { label: "Proposta", href: "/proposta" },
+  { label: "Segmentos", href: "/segmentos" },
+  { label: "Vida Escolar", href: "/vida-escolar" },
+  { label: "Depoimentos", href: "/depoimentos" },
+  { label: "Contato", href: "/contato" },
 ];
-
-// Animation variants for mobile menu items
-const itemVariants: Variants = {
-  initial: { rotateX: 0, opacity: 1 },
-  hover: { rotateX: -90, opacity: 0 },
-};
-
-const backVariants: Variants = {
-  initial: { rotateX: 90, opacity: 0 },
-  hover: { rotateX: 0, opacity: 1 },
-};
-
-const glowVariants: Variants = {
-  initial: { opacity: 0, scale: 0.8 },
-  hover: {
-    opacity: 1,
-    scale: 2,
-    transition: {
-      opacity: { duration: 0.5, ease: [0.4, 0, 0.2, 1] },
-      scale: { duration: 0.5, type: "spring", stiffness: 300, damping: 25 },
-    },
-  },
-};
-
-const sharedTransition = {
-  type: "spring" as const,
-  stiffness: 100,
-  damping: 20,
-  duration: 0.5,
-};
 
 function HoverGradientNavBar(): React.JSX.Element {
   const [isOpen, setIsOpen] = useState(false);
   const location = useLocation();
+  const menuRef = useRef<HTMLDivElement>(null);
+  const buttonRef = useRef<HTMLButtonElement>(null);
+  const firstLinkRef = useRef<HTMLAnchorElement>(null);
+
+  // Handle escape key and focus management
+  useEffect(() => {
+    const handleKeyDown = (event: KeyboardEvent) => {
+      if (event.key === 'Escape' && isOpen) {
+        closeMenu();
+      }
+    };
+
+    const handleClickOutside = (event: MouseEvent) => {
+      if (isOpen && menuRef.current && !menuRef.current.contains(event.target as Node)) {
+        closeMenu();
+      }
+    };
+
+    if (isOpen) {
+      document.addEventListener('keydown', handleKeyDown);
+      document.addEventListener('mousedown', handleClickOutside);
+      document.body.style.overflow = 'hidden';
+      
+      // Focus first link when menu opens
+      setTimeout(() => {
+        firstLinkRef.current?.focus();
+      }, 100);
+    } else {
+      document.body.style.overflow = '';
+    }
+
+    return () => {
+      document.removeEventListener('keydown', handleKeyDown);
+      document.removeEventListener('mousedown', handleClickOutside);
+      document.body.style.overflow = '';
+    };
+  }, [isOpen]);
+
+  // Focus trap for mobile menu
+  useEffect(() => {
+    if (!isOpen) return;
+
+    const focusableElements = menuRef.current?.querySelectorAll(
+      'a[href], button, [tabindex]:not([tabindex="-1"])'
+    );
+    
+    if (!focusableElements || focusableElements.length === 0) return;
+
+    const firstElement = focusableElements[0] as HTMLElement;
+    const lastElement = focusableElements[focusableElements.length - 1] as HTMLElement;
+
+    const handleTabKey = (event: KeyboardEvent) => {
+      if (event.key !== 'Tab') return;
+
+      if (event.shiftKey) {
+        if (document.activeElement === firstElement) {
+          event.preventDefault();
+          lastElement.focus();
+        }
+      } else {
+        if (document.activeElement === lastElement) {
+          event.preventDefault();
+          firstElement.focus();
+        }
+      }
+    };
+
+    document.addEventListener('keydown', handleTabKey);
+    return () => document.removeEventListener('keydown', handleTabKey);
+  }, [isOpen]);
+
+  const openMenu = () => {
+    setIsOpen(true);
+  };
+
+  const closeMenu = () => {
+    setIsOpen(false);
+    buttonRef.current?.focus();
+  };
 
   return (
-    <div className="fixed top-0 left-0 w-full z-50">
-      <nav className="w-full mx-auto px-4 h-16 bg-white/95 dark:bg-black/80 backdrop-blur-lg border-b border-gray-200/80 dark:border-gray-800/80 shadow-lg">
-        <div className="container mx-auto flex items-center justify-between h-full">
+    <header className="header-nav">
+      <nav className="nav-container" role="navigation" aria-label="Menu principal">
+        <div className="nav-content">
           {/* Logo */}
-          <Link to="/" className="flex items-center space-x-2">
-            <GraduationCap className="h-8 w-8 text-primary" />
-            <span className="text-xl font-bold">protótipo site</span>
+          <Link to="/" className="nav-logo">
+            <GraduationCap className="logo-icon" aria-hidden="true" />
+            <span className="logo-text">protótipo site</span>
           </Link>
 
-          {/* Desktop Navigation - With hover animations */}
-          <div className="hidden md:flex items-center space-x-2">
+          {/* Desktop Navigation */}
+          <ul className="nav-menu-desktop" role="menubar">
             {menuItems.map((item) => (
-              <motion.div key={item.label} className="relative">
-                <motion.div
-                  className="block rounded-xl overflow-visible group relative"
-                  style={{ perspective: "600px" }}
-                  whileHover="hover"
-                  initial="initial"
+              <li key={item.href} role="none">
+                <Link
+                  to={item.href}
+                  className={`nav-link ${location.pathname === item.href ? 'nav-link-active' : ''}`}
+                  role="menuitem"
                 >
-                  {/* Per-item glow for desktop */}
-                  <motion.div
-                    className="absolute inset-0 z-0 pointer-events-none rounded-xl"
-                    variants={glowVariants}
-                    style={{
-                      background: item.gradient,
-                      opacity: 0,
-                    }}
-                  />
-                  {/* Front-facing */}
-                  <motion.div
-                    variants={itemVariants}
-                    transition={sharedTransition}
-                    style={{
-                      transformStyle: "preserve-3d",
-                      transformOrigin: "center bottom"
-                    }}
-                  >
-                    <Link
-                      to={item.href}
-                      className={`flex items-center space-x-2 px-3 py-2 rounded-xl text-sm font-medium transition-colors duration-200 relative z-10 ${
-                        location.pathname === item.href
-                          ? 'text-primary bg-primary/10'
-                          : 'text-gray-600 dark:text-gray-300 group-hover:text-gray-900 dark:group-hover:text-white'
-                      }`}
-                    >
-                      <span className={`transition-colors duration-300 ${item.iconColor}`}>
-                        {item.icon}
-                      </span>
-                      <span>{item.label}</span>
-                    </Link>
-                  </motion.div>
-                  {/* Back-facing */}
-                  <motion.div
-                    className="absolute inset-0 z-10"
-                    variants={backVariants}
-                    transition={sharedTransition}
-                    style={{
-                      transformStyle: "preserve-3d",
-                      transformOrigin: "center top",
-                      transform: "rotateX(90deg)"
-                    }}
-                  >
-                    <Link
-                      to={item.href}
-                      className={`flex items-center space-x-2 px-3 py-2 rounded-xl text-sm font-medium transition-colors duration-200 ${
-                        location.pathname === item.href
-                          ? 'text-primary bg-primary/10'
-                          : 'text-gray-600 dark:text-gray-300 group-hover:text-gray-900 dark:group-hover:text-white'
-                      }`}
-                    >
-                      <span className={`transition-colors duration-300 ${item.iconColor}`}>
-                        {item.icon}
-                      </span>
-                      <span>{item.label}</span>
-                    </Link>
-                  </motion.div>
-                </motion.div>
-              </motion.div>
+                  {item.label}
+                </Link>
+              </li>
             ))}
-          </div>
+          </ul>
 
           {/* Mobile menu button */}
-          <div className="md:hidden">
-            <button
-              onClick={() => setIsOpen(!isOpen)}
-              className="p-2 rounded-lg text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors"
-            >
-              {isOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
-            </button>
-          </div>
+          <button
+            ref={buttonRef}
+            onClick={openMenu}
+            className="nav-menu-button"
+            aria-controls="mobile-menu"
+            aria-expanded={isOpen}
+            aria-label={isOpen ? "Fechar menu" : "Abrir menu"}
+          >
+            <span className="sr-only">{isOpen ? "Fechar menu" : "Abrir menu"}</span>
+            {isOpen ? <X className="menu-icon" aria-hidden="true" /> : <Menu className="menu-icon" aria-hidden="true" />}
+          </button>
         </div>
 
-        {/* Mobile Navigation Fullscreen Overlay */}
-        <AnimatePresence>
-          {isOpen && (
-            <motion.div
-              initial={{ opacity: 0, y: -20 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -20 }}
-              transition={{ duration: 0.3, ease: [0.4, 0, 0.2, 1] }}
-              className="fixed inset-0 top-16 z-50 md:hidden bg-white/95 dark:bg-black/95 backdrop-blur-lg"
-            >
-              {/* Close overlay when clicking background */}
-              <div 
-                className="absolute inset-0"
-                onClick={() => setIsOpen(false)}
-              />
+        {/* Mobile Navigation */}
+        {isOpen && (
+          <div 
+            ref={menuRef}
+            id="mobile-menu"
+            className="nav-menu-mobile"
+            role="menu"
+            aria-labelledby="nav-menu-button"
+          >
+            <div className="nav-menu-backdrop" onClick={closeMenu} aria-hidden="true" />
+            
+            <div className="nav-menu-content">
+              <ul className="nav-menu-list" role="none">
+                {menuItems.map((item, index) => (
+                  <li key={item.href} role="none">
+                    <Link
+                      ref={index === 0 ? firstLinkRef : undefined}
+                      to={item.href}
+                      onClick={closeMenu}
+                      className={`nav-menu-item ${location.pathname === item.href ? 'nav-menu-item-active' : ''}`}
+                      role="menuitem"
+                    >
+                      {item.label}
+                      {location.pathname === item.href && (
+                        <span className="nav-active-indicator" aria-hidden="true" />
+                      )}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
               
-              <div className="relative h-full flex flex-col bg-white dark:bg-black">
-                {/* Menu items container */}
-                <div className="flex-1 overflow-y-auto px-6 py-8">
-                  <div className="space-y-3">
-                    {menuItems.map((item: HoverGradientMenuItem, index) => (
-                      <motion.div 
-                        key={item.label} 
-                        initial={{ opacity: 0, x: -30 }}
-                        animate={{ opacity: 1, x: 0 }}
-                        transition={{ 
-                          duration: 0.25, 
-                          delay: index * 0.05,
-                          ease: [0.4, 0, 0.2, 1]
-                        }}
-                        className="relative"
-                      >
-                        <Link
-                          to={item.href}
-                          onClick={() => setIsOpen(false)}
-                          className={`flex items-center space-x-4 px-4 py-3 rounded-xl transition-all duration-200 text-base font-medium ${
-                            location.pathname === item.href
-                              ? 'text-primary bg-primary/10 shadow-sm border border-primary/20'
-                              : 'text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-800'
-                          }`}
-                        >
-                          <span className={`transition-colors duration-200 flex-shrink-0 ${
-                            location.pathname === item.href 
-                              ? 'text-primary' 
-                              : 'text-gray-600 dark:text-gray-400'
-                          }`}>
-                            {item.icon}
-                          </span>
-                          <span className="flex-1">{item.label}</span>
-                          
-                          {/* Arrow indicator for active item */}
-                          {location.pathname === item.href && (
-                            <div className="w-2 h-2 rounded-full bg-primary flex-shrink-0"></div>
-                          )}
-                        </Link>
-                      </motion.div>
-                    ))}
-                  </div>
-                </div>
-                
-                {/* Fixed CTA button at bottom */}
-                <motion.div
-                  initial={{ opacity: 0, y: 50 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.3, delay: 0.3 }}
-                  className="flex-shrink-0 p-6 sm:p-8 border-t border-gray-200/60 dark:border-gray-700/60 bg-white/80 dark:bg-black/80 backdrop-blur-sm"
+              <div className="nav-menu-cta">
+                <Link
+                  to="/contato"
+                  onClick={closeMenu}
+                  className="nav-cta-button"
+                  role="menuitem"
                 >
-                  <Link
-                    to="/contato"
-                    onClick={() => setIsOpen(false)}
-                    className="block w-full text-center bg-gradient-to-r from-primary to-primary/90 text-primary-foreground px-6 py-4 rounded-xl font-semibold text-base shadow-lg hover:shadow-xl active:scale-[0.98] transition-all duration-200"
-                  >
-                    Agendar Visita
-                  </Link>
-                  
-                  {/* Safe area for devices with home indicator */}
-                  <div className="h-safe-area-inset-bottom" />
-                </motion.div>
+                  Agendar Visita
+                </Link>
               </div>
-            </motion.div>
-          )}
-        </AnimatePresence>
+            </div>
+          </div>
+        )}
       </nav>
-    </div>
+    </header>
   );
 }
 
