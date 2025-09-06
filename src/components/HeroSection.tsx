@@ -6,6 +6,8 @@ import heroImage from '@/assets/hero-school.jpg';
 import studentsImage from '@/assets/students-learning.jpg';
 import libraryImage from '@/assets/library.jpg';
 
+// HeroSection component with Button integration
+
 const HeroSection = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
 
