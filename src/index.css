@@ -50,13 +50,13 @@
     --gradient-hero: linear-gradient(135deg, hsl(var(--school-blue)), hsl(var(--school-purple)));
     --gradient-card: linear-gradient(135deg, hsl(var(--school-white)), hsl(var(--muted)));
     
-    /* Shadows */
+    /* Shadows - Optimized for performance */
     --shadow-card: 0 4px 20px -4px hsl(var(--school-blue) / 0.1);
     --shadow-hero: 0 10px 40px -10px hsl(var(--school-purple) / 0.3);
-    
-    /* Animations */
-    --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    --transition-bounce: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+
+    /* Animations - Optimized transitions */
+    --transition-smooth: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-bounce: transform 0.2s cubic-bezier(0.68, -0.55, 0.265, 1.55);
 
     --sidebar-background: 0 0% 98%;
 
@@ -121,10 +121,20 @@
 
   body {
     @apply bg-background text-foreground font-inter antialiased m-0 p-0;
+    /* Optimize font rendering */
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    font-display: swap;
   }
   
   html, body, #root {
     @apply h-full m-0 p-0;
+  }
+
+  /* Optimize images and media */
+  img {
+    @apply max-w-full h-auto;
+    image-rendering: optimizequality;
   }
 }
 
@@ -186,14 +196,17 @@
     @apply scale-105;
   }
 
-  /* Card Styles */
+  /* Card Styles - Optimized */
   .card-school {
-    @apply bg-white rounded-lg p-6 transition-all duration-300;
+    @apply bg-white rounded-lg p-6;
     box-shadow: var(--shadow-card);
+    transition: var(--transition-smooth);
+    will-change: transform;
   }
 
   .card-school:hover {
-    @apply scale-105 -translate-y-2;
+    @apply -translate-y-1;
+    transform: translateY(-4px) scale(1.02);
     box-shadow: var(--shadow-hero);
   }
 
@@ -211,17 +224,20 @@
     @apply flex-1;
   }
 
-  /* Animation Classes */
+  /* Animation Classes - Optimized */
   .fade-in {
-    @apply animate-[fadeIn_0.6s_ease-out];
+    @apply animate-[fadeIn_0.4s_ease-out_forwards];
+    will-change: opacity, transform;
   }
 
   .slide-up {
-    @apply animate-[slideUp_0.8s_ease-out];
+    @apply animate-[slideUp_0.5s_ease-out_forwards];
+    will-change: opacity, transform;
   }
 
   .bounce-in {
-    @apply animate-[bounceIn_0.6s_ease-out];
+    @apply animate-[bounceIn_0.4s_ease-out_forwards];
+    will-change: opacity, transform;
   }
 }
 

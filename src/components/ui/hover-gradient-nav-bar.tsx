@@ -167,7 +167,7 @@ function HoverGradientNavBar(): React.JSX.Element {
                 onClick={() => setIsOpen(false)}
               />
               
-              <div className="relative h-full flex flex-col">
+              <div className="relative h-full flex flex-col bg-white dark:bg-black">
                 {/* Menu items container */}
                 <div className="flex-1 overflow-y-auto px-6 py-8">
                   <div className="space-y-3">
@@ -186,13 +186,17 @@ function HoverGradientNavBar(): React.JSX.Element {
                         <Link
                           to={item.href}
                           onClick={() => setIsOpen(false)}
-                          className={`flex items-center space-x-4 px-5 py-4 rounded-xl transition-all duration-200 text-base font-medium ${
+                          className={`flex items-center space-x-4 px-4 py-3 rounded-xl transition-all duration-200 text-base font-medium ${
                             location.pathname === item.href
                               ? 'text-primary bg-primary/10 shadow-sm border border-primary/20'
                               : 'text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-800'
                           }`}
                         >
-                          <span className={`transition-colors duration-200 flex-shrink-0 ${item.iconColor}`}>
+                          <span className={`transition-colors duration-200 flex-shrink-0 ${
+                            location.pathname === item.href 
+                              ? 'text-primary' 
+                              : 'text-gray-600 dark:text-gray-400'
+                          }`}>
                             {item.icon}
                           </span>
                           <span className="flex-1">{item.label}</span>

@@ -41,14 +41,16 @@ const NewsSection = () => {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8 mb-12">
           {news.map((item, index) => (
-            <Card key={item.id} className={`card-school fade-in`} style={{ animationDelay: `${index * 0.2}s` }}>
+            <Card key={item.id} className={`card-school fade-in`} style={{ animationDelay: `${index * 0.1}s` }}>
               <div className="relative overflow-hidden rounded-t-lg">
                 <img
                   src={item.image}
                   alt={item.title}
-                  className="w-full h-48 object-cover transition-transform duration-300 hover:scale-105"
+                  className="w-full h-40 sm:h-48 object-cover transition-transform duration-200 hover:scale-105"
+                  loading="lazy"
+                  decoding="async"
                 />
                 <div className="absolute top-4 left-4">
                   <span className="bg-primary text-primary-foreground px-3 py-1 rounded-full text-sm font-medium">
@@ -56,18 +58,18 @@ const NewsSection = () => {
                   </span>
                 </div>
               </div>
-              <CardContent className="p-6">
-                <div className="flex items-center text-sm text-muted-foreground mb-3">
-                  <Calendar className="h-4 w-4 mr-2" />
+              <CardContent className="p-4 sm:p-6">
+                <div className="flex items-center text-xs sm:text-sm text-muted-foreground mb-3">
+                  <Calendar className="h-3 w-3 sm:h-4 sm:w-4 mr-2" />
                   {item.date}
                 </div>
-                <h3 className="text-xl font-semibold mb-3 line-clamp-2">
+                <h3 className="text-lg sm:text-xl font-semibold mb-3 line-clamp-2">
                   {item.title}
                 </h3>
-                <p className="text-muted-foreground mb-4 line-clamp-3">
+                <p className="text-sm sm:text-base text-muted-foreground mb-4 line-clamp-3">
                   {item.summary}
                 </p>
-                <ShimmerButton className="bg-primary text-primary-foreground px-4 py-2 text-sm">
+                <ShimmerButton className="bg-primary text-primary-foreground px-3 sm:px-4 py-2 text-xs sm:text-sm">
                   Leia mais
                 </ShimmerButton>
               </CardContent>

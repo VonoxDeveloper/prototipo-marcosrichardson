@@ -48,23 +48,25 @@ const AboutSection = () => {
             </div>
           </div>
 
-          {/* Image */}
+          {/* Image - Optimized */}
           <div className="relative fade-in">
             <div className="relative overflow-hidden rounded-2xl">
               <img
                 src={studentsImage}
                 alt="Estudantes em sala de aula"
-                className="w-full h-[600px] object-cover"
+                className="w-full h-[400px] sm:h-[500px] lg:h-[600px] object-cover"
+                loading="lazy"
+                decoding="async"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent" />
             </div>
-            {/* Floating Stats */}
-            <div className="absolute -bottom-4 -left-4 sm:-bottom-8 sm:-left-8 bg-white rounded-xl shadow-lg p-4 sm:p-6 bounce-in">
-              <div className="text-2xl sm:text-3xl font-bold text-primary">25+</div>
+            {/* Floating Stats - Mobile Optimized */}
+            <div className="absolute -bottom-3 -left-3 sm:-bottom-4 sm:-left-4 lg:-bottom-8 lg:-left-8 bg-white rounded-xl shadow-lg p-3 sm:p-4 lg:p-6 bounce-in">
+              <div className="text-xl sm:text-2xl lg:text-3xl font-bold text-primary">25+</div>
               <div className="text-xs sm:text-sm text-muted-foreground">Anos de Tradição</div>
             </div>
-            <div className="absolute -top-4 -right-4 sm:-top-8 sm:-right-8 bg-primary text-white rounded-xl shadow-lg p-4 sm:p-6 bounce-in">
-              <div className="text-2xl sm:text-3xl font-bold">98%</div>
+            <div className="absolute -top-3 -right-3 sm:-top-4 sm:-right-4 lg:-top-8 lg:-right-8 bg-primary text-white rounded-xl shadow-lg p-3 sm:p-4 lg:p-6 bounce-in">
+              <div className="text-xl sm:text-2xl lg:text-3xl font-bold">98%</div>
               <div className="text-xs sm:text-sm opacity-90">Satisfação das Famílias</div>
             </div>
           </div>
@@ -79,21 +81,21 @@ const AboutSection = () => {
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
             {values.map((value, index) => {
               const IconComponent = value.icon;
               return (
                 <Card 
                   key={value.title} 
                   className={`card-school text-center fade-in`}
-                  style={{ animationDelay: `${index * 0.2}s` }}
+                  style={{ animationDelay: `${index * 0.1}s` }}
                 >
-                  <CardContent className="p-8">
-                    <div className="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-6">
-                      <IconComponent className="h-8 w-8 text-primary" />
+                  <CardContent className="p-6 lg:p-8">
+                    <div className="w-12 h-12 sm:w-14 sm:h-14 lg:w-16 lg:h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-4 lg:mb-6">
+                      <IconComponent className="h-6 w-6 sm:h-7 sm:w-7 lg:h-8 lg:w-8 text-primary" />
                     </div>
-                    <h4 className="text-xl font-semibold mb-4">{value.title}</h4>
-                    <p className="text-muted-foreground">{value.description}</p>
+                    <h4 className="text-lg sm:text-xl font-semibold mb-3 lg:mb-4">{value.title}</h4>
+                    <p className="text-sm sm:text-base text-muted-foreground">{value.description}</p>
                   </CardContent>
                 </Card>
               );

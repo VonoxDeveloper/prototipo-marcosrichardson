@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { ChevronLeft, ChevronRight, Users, BookOpen, Award } from 'lucide-react';
 import { ShimmerButton } from '@/components/ui/shimmer-button';
+import { preloadImages } from '@/utils/performance';
 import heroImage from '@/assets/hero-school.jpg';
 import studentsImage from '@/assets/students-learning.jpg';
 import libraryImage from '@/assets/library.jpg';
@@ -29,10 +30,16 @@ const HeroSection = () => {
     }
   ];
 
+  // Preload images for better performance
+  useEffect(() => {
+    const imagesToPreload = slides.map(slide => slide.image);
+    preloadImages(imagesToPreload);
+  }, []);
+
   useEffect(() => {
     const timer = setInterval(() => {
       setCurrentSlide((prev) => (prev + 1) % slides.length);
-    }, 5000);
+    }, 6000); // Increased interval for better UX
 
     return () => clearInterval(timer);
   }, [slides.length]);
@@ -47,12 +54,12 @@ const HeroSection = () => {
 
   return (
     <section className="hero-section">
-      {/* Background Images */}
+      {/* Background Images - Optimized */}
       <div className="absolute inset-0 h-screen overflow-hidden">
         {slides.map((slide, index) => (
           <div
             key={index}
-            className={`absolute inset-0 transition-opacity duration-1000 ${
+            className={`absolute inset-0 transition-opacity duration-700 ${
               index === currentSlide ? 'opacity-100' : 'opacity-0'
             }`}
           >
@@ -61,6 +68,8 @@ const HeroSection = () => {
               alt={slide.title}
               className="w-full h-full object-cover object-center"
               style={{ minHeight: '100vh' }}
+              loading={index === 0 ? 'eager' : 'lazy'}
+              decoding="async"
             />
             <div className="absolute inset-0 bg-black/40"></div>
           </div>
@@ -73,10 +82,10 @@ const HeroSection = () => {
           <span className="inline-block px-4 py-2 bg-white/20 rounded-full text-sm font-medium mb-4 backdrop-blur-sm">
             {slides[currentSlide].highlight}
           </span>
-          <h1 className="text-2xl xs:text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold mb-4 sm:mb-6 slide-up leading-tight">
+          <h1 className="text-3xl xs:text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold mb-4 sm:mb-6 slide-up leading-tight">
             {slides[currentSlide].title}
           </h1>
-          <p className="text-lg sm:text-xl md:text-2xl mb-8 max-w-3xl mx-auto opacity-90">
+          <p className="text-base sm:text-lg md:text-xl lg:text-2xl mb-8 max-w-3xl mx-auto opacity-90 px-4">
             {slides[currentSlide].subtitle}
           </p>
         </div>
@@ -90,38 +99,40 @@ const HeroSection = () => {
           </ShimmerButton>
         </div>
 
-        {/* Stats */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-12 mb-16 max-w-4xl mx-auto">
-          <div className="text-center bounce-in">
-            <Users className="h-8 w-8 mx-auto mb-2 text-white" />
-            <div className="text-2xl font-bold">1200+</div>
-            <div className="text-sm opacity-80">Alunos Ativos</div>
+        {/* Stats - Mobile Optimized */}
+        <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 sm:gap-8 mt-12 mb-16 max-w-4xl mx-auto px-4">
+          <div className="text-center bounce-in bg-white/10 backdrop-blur-sm rounded-lg p-4">
+            <Users className="h-6 w-6 sm:h-8 sm:w-8 mx-auto mb-2 text-white" />
+            <div className="text-xl sm:text-2xl font-bold">1200+</div>
+            <div className="text-xs sm:text-sm opacity-80">Alunos Ativos</div>
           </div>
-          <div className="text-center bounce-in">
-            <BookOpen className="h-8 w-8 mx-auto mb-2 text-white" />
-            <div className="text-2xl font-bold">25</div>
-            <div className="text-sm opacity-80">Anos de Tradição</div>
+          <div className="text-center bounce-in bg-white/10 backdrop-blur-sm rounded-lg p-4">
+            <BookOpen className="h-6 w-6 sm:h-8 sm:w-8 mx-auto mb-2 text-white" />
+            <div className="text-xl sm:text-2xl font-bold">25</div>
+            <div className="text-xs sm:text-sm opacity-80">Anos de Tradição</div>
           </div>
-          <div className="text-center bounce-in">
-            <Award className="h-8 w-8 mx-auto mb-2 text-white" />
-            <div className="text-2xl font-bold">98%</div>
-            <div className="text-sm opacity-80">Aprovação Vestibular</div>
+          <div className="text-center bounce-in bg-white/10 backdrop-blur-sm rounded-lg p-4">
+            <Award className="h-6 w-6 sm:h-8 sm:w-8 mx-auto mb-2 text-white" />
+            <div className="text-xl sm:text-2xl font-bold">98%</div>
+            <div className="text-xs sm:text-sm opacity-80">Aprovação Vestibular</div>
           </div>
         </div>
       </div>
 
-      {/* Navigation Arrows */}
+      {/* Navigation Arrows - Mobile Optimized */}
       <button
         onClick={prevSlide}
-        className="absolute left-4 top-1/2 -translate-y-1/2 bg-white/20 hover:bg-white/30 backdrop-blur-sm rounded-full p-3 transition-all duration-300"
+        className="absolute left-2 sm:left-4 top-1/2 -translate-y-1/2 bg-white/20 hover:bg-white/30 backdrop-blur-sm rounded-full p-2 sm:p-3 transition-all duration-200"
+        aria-label="Slide anterior"
       >
-        <ChevronLeft className="h-6 w-6 text-white" />
+        <ChevronLeft className="h-4 w-4 sm:h-6 sm:w-6 text-white" />
       </button>
       <button
         onClick={nextSlide}
-        className="absolute right-4 top-1/2 -translate-y-1/2 bg-white/20 hover:bg-white/30 backdrop-blur-sm rounded-full p-3 transition-all duration-300"
+        className="absolute right-2 sm:right-4 top-1/2 -translate-y-1/2 bg-white/20 hover:bg-white/30 backdrop-blur-sm rounded-full p-2 sm:p-3 transition-all duration-200"
+        aria-label="Próximo slide"
       >
-        <ChevronRight className="h-6 w-6 text-white" />
+        <ChevronRight className="h-4 w-4 sm:h-6 sm:w-6 text-white" />
       </button>
 
       {/* Dots Indicator */}
