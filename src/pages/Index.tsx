@@ -1,13 +1,13 @@
 import Footer from '@/components/Footer';
-import HeroSection from '@/components/HeroSection';
-import SiteOverview from '@/components/SiteOverview';
+import MinimalHero from '@/components/MinimalHero';
+import VisualOverview from '@/components/VisualOverview';
 
 const Index = () => {
   return (
     <div className="min-h-screen">
       <main className="pt-16">
-        <HeroSection />
-        <SiteOverview />
+        <MinimalHero />
+        <VisualOverview />
       </main>
       <Footer />
     </div>
