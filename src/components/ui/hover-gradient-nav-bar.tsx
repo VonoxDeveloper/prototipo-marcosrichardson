@@ -155,11 +155,11 @@ function HoverGradientNavBar(): React.JSX.Element {
         <AnimatePresence>
           {isOpen && (
             <motion.div
-              initial={{ opacity: 0, scale: 0.95 }}
-              animate={{ opacity: 1, scale: 1 }}
-              exit={{ opacity: 0, scale: 0.95 }}
-              transition={{ duration: 0.2, ease: [0.4, 0, 0.2, 1] }}
-              className="fixed inset-0 top-16 z-50 md:hidden bg-white/98 dark:bg-black/98 backdrop-blur-xl"
+              initial={{ opacity: 0, y: -20 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -20 }}
+              transition={{ duration: 0.3, ease: [0.4, 0, 0.2, 1] }}
+              className="fixed inset-0 top-16 z-50 md:hidden bg-white/95 dark:bg-black/95 backdrop-blur-lg"
             >
               {/* Close overlay when clicking background */}
               <div 
@@ -168,63 +168,42 @@ function HoverGradientNavBar(): React.JSX.Element {
               />
               
               <div className="relative h-full flex flex-col">
-                {/* Menu items container with better scrolling */}
-                <div className="flex-1 overflow-y-auto overscroll-contain">
-                  <div className="min-h-full px-6 py-8 sm:px-8">
-                    <div className="space-y-2">
-                      {menuItems.map((item: HoverGradientMenuItem, index) => (
-                        <motion.div 
-                          key={item.label} 
-                          initial={{ opacity: 0, x: -30 }}
-                          animate={{ opacity: 1, x: 0 }}
-                          transition={{ 
-                            duration: 0.25, 
-                            delay: index * 0.05,
-                            ease: [0.4, 0, 0.2, 1]
-                          }}
-                          className="relative"
+                {/* Menu items container */}
+                <div className="flex-1 overflow-y-auto px-6 py-8">
+                  <div className="space-y-3">
+                    {menuItems.map((item: HoverGradientMenuItem, index) => (
+                      <motion.div 
+                        key={item.label} 
+                        initial={{ opacity: 0, x: -30 }}
+                        animate={{ opacity: 1, x: 0 }}
+                        transition={{ 
+                          duration: 0.25, 
+                          delay: index * 0.05,
+                          ease: [0.4, 0, 0.2, 1]
+                        }}
+                        className="relative"
+                      >
+                        <Link
+                          to={item.href}
+                          onClick={() => setIsOpen(false)}
+                          className={`flex items-center space-x-4 px-5 py-4 rounded-xl transition-all duration-200 text-base font-medium ${
+                            location.pathname === item.href
+                              ? 'text-primary bg-primary/10 shadow-sm border border-primary/20'
+                              : 'text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-800'
+                          }`}
                         >
-                          <motion.div
-                            className="block rounded-xl overflow-hidden relative"
-                            whileTap={{ scale: 0.98 }}
-                            transition={{ type: "spring", stiffness: 500, damping: 30 }}
-                          >
-                            {/* Gradient background on touch/hover */}
-                            <motion.div
-                              className="absolute inset-0 z-0 pointer-events-none rounded-xl opacity-0"
-                              whileTap={{ opacity: 0.1 }}
-                              style={{ background: item.gradient }}
-                            />
-                            
-                            <Link
-                              to={item.href}
-                              onClick={() => setIsOpen(false)}
-                              className={`flex items-center space-x-4 px-5 py-4 rounded-xl relative z-10 transition-all duration-200 text-base font-medium active:bg-gray-100 dark:active:bg-gray-800 ${
-                                location.pathname === item.href
-                                  ? 'text-primary bg-primary/10 shadow-sm border border-primary/20'
-                                  : 'text-gray-700 dark:text-gray-200'
-                              }`}
-                            >
-                              <span className={`transition-colors duration-200 flex-shrink-0 ${item.iconColor}`}>
-                                {item.icon}
-                              </span>
-                              <span className="flex-1">{item.label}</span>
-                              
-                              {/* Arrow indicator for active item */}
-                              {location.pathname === item.href && (
-                                <motion.div
-                                  initial={{ opacity: 0, scale: 0 }}
-                                  animate={{ opacity: 1, scale: 1 }}
-                                  className="flex-shrink-0"
-                                >
-                                  <div className="w-2 h-2 rounded-full bg-primary"></div>
-                                </motion.div>
-                              )}
-                            </Link>
-                          </motion.div>
-                        </motion.div>
-                      ))}
-                    </div>
+                          <span className={`transition-colors duration-200 flex-shrink-0 ${item.iconColor}`}>
+                            {item.icon}
+                          </span>
+                          <span className="flex-1">{item.label}</span>
+                          
+                          {/* Arrow indicator for active item */}
+                          {location.pathname === item.href && (
+                            <div className="w-2 h-2 rounded-full bg-primary flex-shrink-0"></div>
+                          )}
+                        </Link>
+                      </motion.div>
+                    ))}
                   </div>
                 </div>
                 
