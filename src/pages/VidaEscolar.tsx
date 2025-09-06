@@ -1,6 +1,6 @@
 import Footer from '@/components/Footer';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
-import { Button } from '@/components/ui/button';
+import { HoverButton } from '@/components/ui/hover-button';
 import { Users, Calendar, Building, Lightbulb, Heart, BookOpen, Palette, Trophy } from 'lucide-react';
 import heroSchool from '@/assets/hero-school.jpg';
 
@@ -186,8 +186,8 @@ const VidaEscolar = () => {
                 um lugar único para crescer e aprender.
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <Button text="Agendar Visita" />
-                <Button text="Saiba Mais" variant="secondary" />
+                <HoverButton text="Agendar Visita" />
+                <HoverButton text="Saiba Mais" variant="outline" />
               </div>
             </div>
           </div>

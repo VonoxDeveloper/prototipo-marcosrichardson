@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { ChevronLeft, ChevronRight, Users, BookOpen, Award } from 'lucide-react';
-import { Button } from '@/components/ui/button';
+import { HoverButton } from '@/components/ui/hover-button';
 import { preloadImages } from '@/utils/performance';
 import heroImage from '@/assets/hero-school.jpg';
 import studentsImage from '@/assets/students-learning.jpg';
@@ -93,8 +93,8 @@ const HeroSection = () => {
         </div>
 
         <div className="flex flex-col sm:flex-row gap-4 justify-center bounce-in">
-          <Button text="Conheça Nossa Escola" />
-          <Button text="Agendar Visita" />
+          <HoverButton text="Conheça Nossa Escola" />
+          <HoverButton text="Agendar Visita" />
         </div>
 
         {/* Stats - Mobile Optimized */}

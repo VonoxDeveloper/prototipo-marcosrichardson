@@ -1,7 +1,7 @@
 import Footer from '@/components/Footer';
 import { Card, CardContent } from '@/components/ui/card';
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from '@/components/ui/carousel';
-import { Button } from '@/components/ui/button';
+import { HoverButton } from '@/components/ui/hover-button';
 import { Quote, Star, Heart, Users } from 'lucide-react';
 import children1 from '@/assets/children-1.jpg';
 import children2 from '@/assets/children-2.jpg';
@@ -241,12 +241,12 @@ const Depoimentos = () => {
                 de centenas de famílias. Ou compartilhe sua própria experiência conosco.
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <Button size="lg" className="btn-school">
+                <HoverButton size="lg" className="btn-school">
                   Agendar visita
-                </Button>
-                <Button variant="outline" size="lg">
+                </HoverButton>
+                <HoverButton variant="outline" size="lg">
                   Compartilhar depoimento
-                </Button>
+                </HoverButton>
               </div>
             </div>
           </div>

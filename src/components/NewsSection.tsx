@@ -1,5 +1,5 @@
 import { Calendar } from 'lucide-react';
-import { Button } from '@/components/ui/button';
+import { HoverButton } from '@/components/ui/hover-button';
 import { Card, CardContent } from '@/components/ui/card';
 import playgroundImage from '@/assets/playground.jpg';
 
@@ -69,14 +69,14 @@ const NewsSection = () => {
                 <p className="text-sm sm:text-base text-muted-foreground mb-4 line-clamp-3">
                   {item.summary}
                 </p>
-                <Button text="Leia mais" size="sm" />
+                <HoverButton text="Leia mais" size="sm" />
               </CardContent>
             </Card>
           ))}
         </div>
 
         <div className="text-center">
-          <Button text="Ver Todas as Notícias" />
+          <HoverButton text="Ver Todas as Notícias" />
         </div>
       </div>
     </section>

@@ -2,7 +2,7 @@ import * as React from "react"
 import { ChevronLeft, ChevronRight, MoreHorizontal } from "lucide-react"
 
 import { cn } from "@/lib/utils"
-import { ButtonProps, buttonVariants } from "@/components/ui/button"
+import { HoverButtonProps, hoverButtonVariants } from "@/components/ui/hover-button"
 
 const Pagination = ({ className, ...props }: React.ComponentProps<"nav">) => (
   <nav
@@ -36,7 +36,7 @@ PaginationItem.displayName = "PaginationItem"
 
 type PaginationLinkProps = {
   isActive?: boolean
-} & Pick<ButtonProps, "size"> &
+} & Pick<HoverButtonProps, "size"> &
   React.ComponentProps<"a">
 
 const PaginationLink = ({
@@ -48,7 +48,7 @@ const PaginationLink = ({
   <a
     aria-current={isActive ? "page" : undefined}
     className={cn(
-      buttonVariants({
+      hoverButtonVariants({
         variant: isActive ? "outline" : "ghost",
         size,
       }),
@@ -65,7 +65,7 @@ const PaginationPrevious = ({
 }: React.ComponentProps<typeof PaginationLink>) => (
   <PaginationLink
     aria-label="Go to previous page"
-    size="default"
+    size="md"
     className={cn("gap-1 pl-2.5", className)}
     {...props}
   >
@@ -81,7 +81,7 @@ const PaginationNext = ({
 }: React.ComponentProps<typeof PaginationLink>) => (
   <PaginationLink
     aria-label="Go to next page"
-    size="default"
+    size="md"
     className={cn("gap-1 pr-2.5", className)}
     {...props}
   >
