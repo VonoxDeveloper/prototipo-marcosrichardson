@@ -1,6 +1,6 @@
 import Footer from '@/components/Footer';
 import { Card, CardContent } from '@/components/ui/card';
-import { ShimmerButton } from '@/components/ui/shimmer-button';
+import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import { Label } from '@/components/ui/label';
@@ -222,12 +222,11 @@ const Contato = () => {
                       />
                     </div>
 
-                    <ShimmerButton 
+                    <Button 
                       type="submit" 
-                      className="w-full bg-primary text-white hover:bg-primary/90 h-12"
-                    >
-                      Enviar Mensagem
-                    </ShimmerButton>
+                      text="Enviar Mensagem"
+                      className="w-full h-12"
+                    />
                   </form>
                 </CardContent>
               </Card>
@@ -274,12 +273,8 @@ const Contato = () => {
                 Será um prazer receber você e sua família!
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <ShimmerButton className="bg-white text-primary hover:bg-white/90">
-                  Agendar Visita
-                </ShimmerButton>
-                <ShimmerButton className="bg-white/10 text-white border border-white/20 hover:bg-white/20">
-                  Tour Virtual
-                </ShimmerButton>
+                <Button text="Agendar Visita" variant="outline" className="bg-white text-primary border-white hover:bg-white/90" />
+                <Button text="Tour Virtual" variant="outline" className="bg-white/10 text-white border-white/20 hover:bg-white/20" />
               </div>
             </div>
           </div>

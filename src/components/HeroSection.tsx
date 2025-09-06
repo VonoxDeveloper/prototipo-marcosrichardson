@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { ChevronLeft, ChevronRight, Users, BookOpen, Award } from 'lucide-react';
-import { ShimmerButton } from '@/components/ui/shimmer-button';
+import { Button } from '@/components/ui/button';
 import { preloadImages } from '@/utils/performance';
 import heroImage from '@/assets/hero-school.jpg';
 import studentsImage from '@/assets/students-learning.jpg';
@@ -91,12 +91,8 @@ const HeroSection = () => {
         </div>
 
         <div className="flex flex-col sm:flex-row gap-4 justify-center bounce-in">
-          <ShimmerButton className="bg-primary text-primary-foreground">
-            Conheça Nossa Escola
-          </ShimmerButton>
-          <ShimmerButton className="bg-primary text-primary-foreground">
-            Agendar Visita
-          </ShimmerButton>
+          <Button text="Conheça Nossa Escola" />
+          <Button text="Agendar Visita" />
         </div>
 
         {/* Stats - Mobile Optimized */}

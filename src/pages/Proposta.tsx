@@ -1,7 +1,7 @@
 import Footer from '@/components/Footer';
 import { Card, CardContent } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
-import { InteractiveHoverButton } from '@/components/ui/interactive-hover-button';
+
 import { BookOpen, Users, Lightbulb, Network, Heart, GraduationCap, Target, Compass, Sparkles } from 'lucide-react';
 import studentsLearning from '@/assets/students-learning.jpg';
 import heroImage from '@/assets/hero-school.jpg';
@@ -278,13 +278,8 @@ const Proposta = () => {
               Agende uma visita e descubra como nossa proposta pedagógica transforma o aprendizado em experiência de vida.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button size="lg" className="text-lg px-8 py-6">
-                Agendar Visita
-              </Button>
-              <InteractiveHoverButton 
-                text="Saiba Mais" 
-                className="w-auto px-8 py-3 text-lg"
-              />
+              <Button size="lg" text="Agendar Visita" />
+              <Button text="Saiba Mais" variant="outline" size="lg" />
             </div>
           </div>
         </div>

@@ -1,6 +1,6 @@
 import Footer from '@/components/Footer';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
-import { ShimmerButton } from '@/components/ui/shimmer-button';
+import { Button } from '@/components/ui/button';
 import { Users, Calendar, Building, Lightbulb, Heart, BookOpen, Palette, Trophy } from 'lucide-react';
 import heroSchool from '@/assets/hero-school.jpg';
 
@@ -186,24 +186,8 @@ const VidaEscolar = () => {
                 um lugar único para crescer e aprender.
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <ShimmerButton
-                  className="bg-primary text-primary-foreground hover:bg-primary/90"
-                  shimmerColor="#ffffff"
-                  shimmerSize="0.05em"
-                  borderRadius="0.5rem"
-                  shimmerDuration="3s"
-                >
-                  Agendar Visita
-                </ShimmerButton>
-                <ShimmerButton
-                  className="bg-secondary text-secondary-foreground hover:bg-secondary/80"
-                  shimmerColor="#ffffff"
-                  shimmerSize="0.05em"
-                  borderRadius="0.5rem"
-                  shimmerDuration="3s"
-                >
-                  Saiba Mais
-                </ShimmerButton>
+                <Button text="Agendar Visita" />
+                <Button text="Saiba Mais" variant="secondary" />
               </div>
             </div>
           </div>

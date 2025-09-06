@@ -1,5 +1,5 @@
 import { Calendar } from 'lucide-react';
-import { ShimmerButton } from '@/components/ui/shimmer-button';
+import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
 import playgroundImage from '@/assets/playground.jpg';
 
@@ -69,18 +69,14 @@ const NewsSection = () => {
                 <p className="text-sm sm:text-base text-muted-foreground mb-4 line-clamp-3">
                   {item.summary}
                 </p>
-                <ShimmerButton className="bg-primary text-primary-foreground px-3 sm:px-4 py-2 text-xs sm:text-sm">
-                  Leia mais
-                </ShimmerButton>
+                <Button text="Leia mais" size="sm" />
               </CardContent>
             </Card>
           ))}
         </div>
 
         <div className="text-center">
-          <ShimmerButton className="bg-primary text-primary-foreground">
-            Ver Todas as Notícias
-          </ShimmerButton>
+          <Button text="Ver Todas as Notícias" />
         </div>
       </div>
     </section>

@@ -1,5 +1,5 @@
 import { Heart, Target, Eye } from 'lucide-react';
-import { ShimmerButton } from '@/components/ui/shimmer-button';
+import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
 import studentsImage from '@/assets/students-learning.jpg';
 
@@ -42,9 +42,7 @@ const AboutSection = () => {
                 comprometidos, oferecemos um ambiente acolhedor onde cada aluno 
                 pode desenvolver seu potencial máximo.
               </p>
-              <ShimmerButton className="bg-primary text-primary-foreground">
-                Conheça Nossa História
-              </ShimmerButton>
+              <Button text="Conheça Nossa História" />
             </div>
           </div>
 
