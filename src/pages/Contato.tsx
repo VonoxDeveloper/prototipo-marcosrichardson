@@ -1,6 +1,6 @@
 import Footer from '@/components/Footer';
 import { Card, CardContent } from '@/components/ui/card';
-import { HoverButton } from '@/components/ui/hover-button';
+import { ButtonUI } from '@/components/ui/button-ui';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import { Label } from '@/components/ui/label';
@@ -222,11 +222,12 @@ const Contato = () => {
                       />
                     </div>
 
-                    <HoverButton 
+                    <ButtonUI 
                       type="submit" 
-                      text="Enviar Mensagem"
                       className="w-full h-12"
-                    />
+                    >
+                      Enviar Mensagem
+                    </ButtonUI>
                   </form>
                 </CardContent>
               </Card>
@@ -273,8 +274,8 @@ const Contato = () => {
                 Será um prazer receber você e sua família!
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <HoverButton text="Agendar Visita" variant="outline" className="bg-white text-primary border-white hover:bg-white/90" />
-                <HoverButton text="Tour Virtual" variant="outline" className="bg-white/10 text-white border-white/20 hover:bg-white/20" />
+                <ButtonUI variant="outline" className="bg-white text-primary border-white hover:bg-white/90">Agendar Visita</ButtonUI>
+                <ButtonUI variant="outline" className="bg-white/10 text-white border-white/20 hover:bg-white/20">Tour Virtual</ButtonUI>
               </div>
             </div>
           </div>

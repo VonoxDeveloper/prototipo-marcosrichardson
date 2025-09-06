@@ -1,6 +1,6 @@
 import Footer from '@/components/Footer';
 import { Card, CardContent } from '@/components/ui/card';
-import { HoverButton } from '@/components/ui/hover-button';
+import { ButtonUI } from '@/components/ui/button-ui';
 import { Smile, Book, GraduationCap, Globe, CheckCircle } from 'lucide-react';
 import heroImage from '@/assets/hero-school.jpg';
 
@@ -145,7 +145,7 @@ const Segmentos = () => {
                           Desenvolvimento integral em cada fase da vida escolar
                         </p>
                         <div className="text-center">
-                          <HoverButton text="Saiba Mais" />
+                          <ButtonUI>Saiba Mais</ButtonUI>
                         </div>
                       </CardContent>
                     </Card>
@@ -166,8 +166,8 @@ const Segmentos = () => {
                 de excelência que o preparará para um futuro brilhante.
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <HoverButton text="Agendar Visita" variant="outline" className="bg-white text-primary border-white hover:bg-white/90" />
-                <HoverButton text="Processo Seletivo" variant="outline" className="bg-white/10 text-white border-white/20 hover:bg-white/20" />
+                <ButtonUI variant="outline" className="bg-white text-primary border-white hover:bg-white/90">Agendar Visita</ButtonUI>
+                <ButtonUI variant="outline" className="bg-white/10 text-white border-white/20 hover:bg-white/20">Processo Seletivo</ButtonUI>
               </div>
             </div>
           </div>

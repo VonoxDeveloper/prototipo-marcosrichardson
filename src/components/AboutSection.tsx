@@ -1,5 +1,5 @@
 import { Heart, Target, Eye } from 'lucide-react';
-import { HoverButton } from '@/components/ui/hover-button';
+import { ButtonUI } from '@/components/ui/button-ui';
 import { Card, CardContent } from '@/components/ui/card';
 import studentsImage from '@/assets/students-learning.jpg';
 
@@ -42,7 +42,7 @@ const AboutSection = () => {
                 comprometidos, oferecemos um ambiente acolhedor onde cada aluno 
                 pode desenvolver seu potencial máximo.
               </p>
-              <HoverButton text="Conheça Nossa História" />
+              <ButtonUI>Conheça Nossa História</ButtonUI>
             </div>
           </div>
 

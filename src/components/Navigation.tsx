@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { Menu, X, GraduationCap } from 'lucide-react';
-import { HoverButton } from '@/components/ui/hover-button';
+import { ButtonUI } from '@/components/ui/button-ui';
 
 const Navigation = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -51,21 +51,21 @@ const Navigation = () => {
                 {item.name}
               </Link>
             ))}
-            <HoverButton variant="default" className="btn-school">
+            <ButtonUI className="btn-school">
               Agendar Visita
-            </HoverButton>
+            </ButtonUI>
           </div>
 
           {/* Mobile menu button */}
           <div className="md:hidden">
-            <HoverButton
+            <ButtonUI
               variant="ghost"
-              size="sm"
+              size="icon"
               onClick={() => setIsOpen(!isOpen)}
               className="text-foreground"
             >
               {isOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
-            </HoverButton>
+            </ButtonUI>
           </div>
         </div>
 
@@ -86,9 +86,9 @@ const Navigation = () => {
                 </Link>
               ))}
               <div className="px-3 py-2">
-                <HoverButton variant="default" className="btn-school w-full">
+                <ButtonUI className="btn-school w-full">
                   Agendar Visita
-                </HoverButton>
+                </ButtonUI>
               </div>
             </div>
           </div>

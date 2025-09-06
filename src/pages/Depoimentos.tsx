@@ -1,7 +1,7 @@
 import Footer from '@/components/Footer';
 import { Card, CardContent } from '@/components/ui/card';
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from '@/components/ui/carousel';
-import { HoverButton } from '@/components/ui/hover-button';
+import { ButtonUI } from '@/components/ui/button-ui';
 import { Quote, Star, Heart, Users } from 'lucide-react';
 import children1 from '@/assets/children-1.jpg';
 import children2 from '@/assets/children-2.jpg';
@@ -220,8 +220,8 @@ const Depoimentos = () => {
                   ))}
                 </CarouselContent>
                 <div className="flex justify-center gap-4 mt-8">
-                  <CarouselPrevious className="relative left-0 translate-y-0" />
-                  <CarouselNext className="relative right-0 translate-y-0" />
+                  <CarouselPrevious className="relative left-0 translate-y-0">Previous</CarouselPrevious>
+                  <CarouselNext className="relative right-0 translate-y-0">Next</CarouselNext>
                 </div>
               </Carousel>
             </div>
@@ -241,12 +241,12 @@ const Depoimentos = () => {
                 de centenas de famílias. Ou compartilhe sua própria experiência conosco.
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <HoverButton size="lg" className="btn-school">
+                <ButtonUI size="lg" className="btn-school">
                   Agendar visita
-                </HoverButton>
-                <HoverButton variant="outline" size="lg">
+                </ButtonUI>
+                <ButtonUI variant="outline" size="lg">
                   Compartilhar depoimento
-                </HoverButton>
+                </ButtonUI>
               </div>
             </div>
           </div>

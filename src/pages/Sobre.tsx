@@ -1,5 +1,5 @@
 import Footer from '@/components/Footer';
-import { HoverButton } from '@/components/ui/hover-button';
+import { ButtonUI } from '@/components/ui/button-ui';
 import { Card, CardContent } from '@/components/ui/card';
 import { Target, Eye, Heart, Users, Award, MapPin } from 'lucide-react';
 import heroImage from '@/assets/hero-school.jpg';
@@ -264,8 +264,8 @@ const Sobre = () => {
                 Agende uma visita ou faça o tour virtual para viver de perto a experiência Prototipo.
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <HoverButton text="Agendar Visita" variant="outline" className="bg-white text-primary border-white hover:bg-white/90" />
-                <HoverButton text="Tour Virtual" variant="outline" className="bg-white/10 text-white border-white/20 hover:bg-white/20" />
+                <ButtonUI variant="outline" className="bg-white text-primary border-white hover:bg-white/90">Agendar Visita</ButtonUI>
+                <ButtonUI variant="outline" className="bg-white/10 text-white border-white/20 hover:bg-white/20">Tour Virtual</ButtonUI>
               </div>
             </div>
           </div>
