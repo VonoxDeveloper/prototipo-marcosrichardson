@@ -1,4 +1,5 @@
-import Footer from '@/components/Footer';
+import Header from '@/components/Header';
+import FooterMR from '@/components/FooterMR';
 import { Card, CardContent } from '@/components/ui/card';
 import { ButtonUI } from '@/components/ui/button-ui';
 import { Smile, Book, GraduationCap, Globe, CheckCircle } from 'lucide-react';
@@ -174,7 +175,7 @@ const Segmentos = () => {
         </section>
       </main>
 
-      <Footer />
+      <FooterMR />
     </div>
   );
 };

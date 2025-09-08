@@ -1,4 +1,5 @@
-import Footer from '@/components/Footer';
+import Header from '@/components/Header';
+import FooterMR from '@/components/FooterMR';
 import { Card, CardContent } from '@/components/ui/card';
 import { ButtonUI } from '@/components/ui/button-ui';
 
@@ -91,6 +92,7 @@ const values = [
 const Proposta = () => {
   return (
     <div className="min-h-screen">
+      <Header />
       {/* Hero Section */}
       <section className="relative h-[60vh] flex items-center justify-center overflow-hidden">
         <div className="absolute inset-0">
@@ -286,7 +288,7 @@ const Proposta = () => {
       </section>
       </main>
 
-      <Footer />
+      <FooterMR />
     </div>
   );
 };

@@ -1,4 +1,5 @@
-import Footer from '@/components/Footer';
+import Header from '@/components/Header';
+import FooterMR from '@/components/FooterMR';
 import { Card, CardContent } from '@/components/ui/card';
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from '@/components/ui/carousel';
 import { ButtonUI } from '@/components/ui/button-ui';
@@ -62,6 +63,7 @@ const testimonials = [
 const Depoimentos = () => {
   return (
     <div className="min-h-screen">
+      <Header />
       <main className="pt-16">
         {/* Hero Image Section */}
         <section className="relative h-[50vh] md:h-[60vh] overflow-hidden">
@@ -252,7 +254,7 @@ const Depoimentos = () => {
           </div>
         </section>
       </main>
-      <Footer />
+      <FooterMR />
     </div>
   );
 };

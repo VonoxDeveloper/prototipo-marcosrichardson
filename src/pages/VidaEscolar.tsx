@@ -1,4 +1,5 @@
-import Footer from '@/components/Footer';
+import Header from '@/components/Header';
+import FooterMR from '@/components/FooterMR';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { ButtonUI } from '@/components/ui/button-ui';
 import { Users, Calendar, Building, Lightbulb, Heart, BookOpen, Palette, Trophy } from 'lucide-react';
@@ -57,6 +58,7 @@ const VidaEscolar = () => {
 
   return (
     <div className="min-h-screen">
+      <Header />
       <main className="pt-16">
         {/* Hero Image Section */}
         <section className="relative h-[50vh] md:h-[60vh] overflow-hidden">
@@ -193,7 +195,7 @@ const VidaEscolar = () => {
           </div>
         </section>
       </main>
-      <Footer />
+      <FooterMR />
     </div>
   );
 };

@@ -1,4 +1,5 @@
-import Footer from '@/components/Footer';
+import Header from '@/components/Header';
+import FooterMR from '@/components/FooterMR';
 import { ButtonUI } from '@/components/ui/button-ui';
 import { Card, CardContent } from '@/components/ui/card';
 import { Target, Eye, Heart, Users, Award, MapPin } from 'lucide-react';
@@ -58,6 +59,7 @@ const Sobre = () => {
 
   return (
     <div className="min-h-screen">
+      <Header />
       {/* Hero Section */}
       <section className="relative h-[60vh] flex items-center justify-center overflow-hidden">
         <div className="absolute inset-0">
@@ -272,7 +274,7 @@ const Sobre = () => {
         </section>
       </main>
 
-      <Footer />
+      <FooterMR />
     </div>
   );
 };
