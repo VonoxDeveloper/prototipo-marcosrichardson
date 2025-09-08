@@ -9,9 +9,11 @@ const Header = () => {
   const navigationItems = [
     { label: "Início", href: "/" },
     { label: "Sobre", href: "/sobre" },
+    { label: "Proposta", href: "/proposta" },
     { label: "Segmentos", href: "/segmentos" },
-    { label: "Admissões", href: "/admissoes" },
-    { label: "Notícias", href: "/noticias" },
+    { label: "Vida Escolar", href: "/vida-escolar" },
+    { label: "Depoimentos", href: "/depoimentos" },
+    { label: "Visitas", href: "/visitas" },
     { label: "Contato", href: "/contato" }
   ];
 
