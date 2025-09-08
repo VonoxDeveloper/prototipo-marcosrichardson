@@ -1,15 +1,29 @@
-import Footer from '@/components/Footer';
-import MinimalHero from '@/components/MinimalHero';
-import VisualOverview from '@/components/VisualOverview';
+import AnnouncementBar from '@/components/AnnouncementBar';
+import Header from '@/components/Header';
+import HeroSection from '@/components/HeroSection';
+import QuickActions from '@/components/QuickActions';
+import AboutPreview from '@/components/AboutPreview';
+import SegmentsPreview from '@/components/SegmentsPreview';
+import NewsPreview from '@/components/NewsPreview';
+import StructurePreview from '@/components/StructurePreview';
+import FinalCTA from '@/components/FinalCTA';
+import FooterMR from '@/components/FooterMR';
 
 const Index = () => {
   return (
     <div className="min-h-screen">
-      <main className="pt-16">
-        <MinimalHero />
-        <VisualOverview />
+      <AnnouncementBar />
+      <Header />
+      <main>
+        <HeroSection />
+        <QuickActions />
+        <AboutPreview />
+        <SegmentsPreview />
+        <NewsPreview />
+        <StructurePreview />
+        <FinalCTA />
       </main>
-      <Footer />
+      <FooterMR />
     </div>
   );
 };

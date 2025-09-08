@@ -58,10 +58,46 @@ interface ButtonUIProps
   extends React.ButtonHTMLAttributes<HTMLButtonElement>,
     VariantProps<typeof buttonVariants> {
   children: React.ReactNode;
+  asChild?: boolean;
 }
 
 const ButtonUI = React.forwardRef<HTMLButtonElement, ButtonUIProps>(
-  ({ className, variant, size, children, ...props }, ref) => {
+  ({ className, variant, size, children, asChild, ...props }, ref) => {
+    if (asChild) {
+      return (
+        <>
+          <style>{`
+            @keyframes rotate {
+              100% {
+                transform: rotate(1turn);
+              }
+            }
+            
+            .rainbow::before {
+              content: '';
+              position: absolute;
+              z-index: -2;
+              left: -50%;
+              top: -50%;
+              width: 200%;
+              height: 200%;
+              background-position: 100% 50%;
+              background-repeat: no-repeat;
+              background-size: 50% 30%;
+              filter: blur(6px);
+              background-image: linear-gradient(45deg, var(--primary), var(--primary-foreground), var(--accent));
+              animation: rotate 4s linear infinite;
+            }
+          `}</style>
+          <div className={cn(buttonVariants({ variant, size }), "rainbow", className)}>
+            <div className={cn(innerButtonVariants({ variant, size }))}>
+              {children}
+            </div>
+          </div>
+        </>
+      );
+    }
+
     return (
       <>
         <style>{`
