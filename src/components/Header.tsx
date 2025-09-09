@@ -1,13 +1,34 @@
-import { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { useState, useEffect } from 'react';
+import { Link, useLocation } from 'react-router-dom';
 import { ButtonUI } from '@/components/ui/button-ui';
-import { Menu, X, GraduationCap } from 'lucide-react';
+import { Menu, X, GraduationCap, Sun, Moon, Search } from 'lucide-react';
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
+  const [isDark, setIsDark] = useState(false);
+  const location = useLocation();
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 20);
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  useEffect(() => {
+    const isDarkMode = document.documentElement.classList.contains('dark');
+    setIsDark(isDarkMode);
+  }, []);
+
+  const toggleTheme = () => {
+    document.documentElement.classList.toggle('dark');
+    setIsDark(!isDark);
+  };
 
   const navigationItems = [
-    { label: "Início", href: "/" },
     { label: "Sobre", href: "/sobre" },
     { label: "Proposta", href: "/proposta" },
     { label: "Segmentos", href: "/segmentos" },
@@ -23,37 +44,63 @@ const Header = () => {
   ];
 
   return (
-    <header className="bg-white shadow-sm border-b border-border sticky top-0 z-50">
+    <header 
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
+        isScrolled 
+          ? 'glass shadow-3d-md py-2' 
+          : 'bg-transparent py-4'
+      }`}
+    >
       <div className="container mx-auto px-4">
-        <div className="flex items-center justify-between h-16">
+        <div className="flex items-center justify-between h-16 md:h-20">
           {/* Logo */}
-          <Link to="/" className="flex items-center gap-3">
-            <div className="bg-primary text-primary-foreground p-2 rounded-lg">
-              <GraduationCap size={24} />
+          <Link 
+            to="/" 
+            className="flex items-center space-x-3 group hover:scale-105 transition-all duration-300"
+          >
+            <div className="relative">
+              <GraduationCap className="h-10 w-10 text-secondary group-hover:animate-pulse" />
+              <div className="absolute inset-0 rounded-full bg-secondary/20 blur-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
             </div>
-            <div className="flex flex-col">
-              <span className="font-bold text-lg text-foreground">Colégio</span>
-              <span className="font-bold text-lg text-primary -mt-1">Marcos Richardson</span>
-            </div>
+            <span className="text-2xl font-display font-bold text-gradient">
+              Colégio Prototipo
+            </span>
           </Link>
 
           {/* Desktop Navigation */}
-          <nav className="hidden lg:flex items-center gap-8">
-            {navigationItems.map((item) => (
+          <nav className="hidden lg:flex items-center space-x-8">
+            {navigationItems.map((item, index) => (
               <Link
-                key={item.href}
+                key={item.label}
                 to={item.href}
-                className="text-foreground hover:text-primary transition-colors font-medium"
+                className={`nav-link ${location.pathname === item.href ? 'active' : ''}`}
+                style={{ '--stagger': index } as React.CSSProperties}
               >
                 {item.label}
               </Link>
             ))}
           </nav>
 
-          {/* Desktop Utilities */}
-          <div className="hidden lg:flex items-center gap-3">
+          {/* Desktop Utility Actions */}
+          <div className="hidden lg:flex items-center space-x-4">
+            <button
+              onClick={toggleTheme}
+              className="p-2 rounded-xl hover:bg-secondary/10 transition-all duration-300 hover:scale-110"
+              aria-label="Toggle theme"
+            >
+              {isDark ? (
+                <Sun className="h-5 w-5 text-secondary" />
+              ) : (
+                <Moon className="h-5 w-5 text-muted-foreground" />
+              )}
+            </button>
+            
+            <button className="p-2 rounded-xl hover:bg-secondary/10 transition-all duration-300 hover:scale-110">
+              <Search className="h-5 w-5 text-muted-foreground" />
+            </button>
+
             {utilityItems.map((item) => (
-              <ButtonUI key={item.href} variant="ghost" size="sm" asChild>
+              <ButtonUI key={item.label} className="btn-premium" asChild>
                 <Link to={item.href}>{item.label}</Link>
               </ButtonUI>
             ))}
@@ -62,33 +109,78 @@ const Header = () => {
           {/* Mobile Menu Button */}
           <button
             onClick={() => setIsMenuOpen(!isMenuOpen)}
-            className="lg:hidden p-2 hover:bg-muted rounded-md transition-colors"
-            aria-label="Toggle menu"
+            className="lg:hidden relative p-3 rounded-xl glass hover:bg-secondary/10 transition-all duration-300"
+            aria-label="Toggle mobile menu"
           >
-            {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
+            <div className="relative w-6 h-6">
+              <span 
+                className={`absolute top-1 left-0 w-6 h-0.5 bg-current transition-all duration-300 ${
+                  isMenuOpen ? 'rotate-45 top-3' : ''
+                }`}
+              />
+              <span 
+                className={`absolute top-3 left-0 w-6 h-0.5 bg-current transition-all duration-300 ${
+                  isMenuOpen ? 'opacity-0' : ''
+                }`}
+              />
+              <span 
+                className={`absolute top-5 left-0 w-6 h-0.5 bg-current transition-all duration-300 ${
+                  isMenuOpen ? '-rotate-45 top-3' : ''
+                }`}
+              />
+            </div>
           </button>
         </div>
 
         {/* Mobile Menu */}
-        {isMenuOpen && (
-          <div className="lg:hidden py-4 border-t border-border">
-            <nav className="flex flex-col gap-4">
-              {navigationItems.map((item) => (
+        <div 
+          className={`lg:hidden transition-all duration-500 overflow-hidden ${
+            isMenuOpen 
+              ? 'max-h-screen opacity-100' 
+              : 'max-h-0 opacity-0'
+          }`}
+        >
+          <div className="glass rounded-3xl m-4 p-6 border border-primary/10">
+            <nav className="space-y-4">
+              {navigationItems.map((item, index) => (
                 <Link
-                  key={item.href}
+                  key={item.label}
                   to={item.href}
-                  className="text-foreground hover:text-primary transition-colors font-medium py-2"
+                  className={`block py-3 px-4 rounded-xl transition-all duration-300 hover:bg-secondary/10 hover:pl-6 ${
+                    location.pathname === item.href 
+                      ? 'bg-secondary/20 text-secondary font-semibold' 
+                      : 'text-muted-foreground'
+                  }`}
+                  style={{ 
+                    animationDelay: `${index * 0.1}s`,
+                    animation: isMenuOpen ? 'slideUp 0.5s ease-out' : 'none'
+                  }}
                   onClick={() => setIsMenuOpen(false)}
                 >
                   {item.label}
                 </Link>
               ))}
-              <div className="border-t border-border pt-4 mt-4">
+              
+              <div className="border-t border-primary/10 pt-4 mt-6 space-y-4">
+                <div className="flex items-center justify-between">
+                  <span className="text-sm font-medium text-muted-foreground">Tema</span>
+                  <button
+                    onClick={toggleTheme}
+                    className="p-2 rounded-lg hover:bg-secondary/10 transition-all duration-300"
+                  >
+                    {isDark ? (
+                      <Sun className="h-5 w-5 text-secondary" />
+                    ) : (
+                      <Moon className="h-5 w-5 text-muted-foreground" />
+                    )}
+                  </button>
+                </div>
+                
                 {utilityItems.map((item) => (
                   <Link
-                    key={item.href}
+                    key={item.label}
                     to={item.href}
-                    className="block text-muted-foreground hover:text-primary transition-colors py-2"
+                    className="block w-full btn-premium text-center"
                     onClick={() => setIsMenuOpen(false)}
                   >
                     {item.label}
@@ -97,7 +189,7 @@ const Header = () => {
               </div>
             </nav>
           </div>
-        )}
+        </div>
       </div>
     </header>
   );
