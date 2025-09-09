@@ -8,35 +8,37 @@
 
 @layer base {
   :root {
-    --background: 248 250 252; /* #F8FAFC */
-    --foreground: 30 22 40; /* #0A1628 */
+    --background: 0 0% 100%; /* #FFFFFF - White */
+    --foreground: 252 52% 26%; /* #291C6C - Midnight Blue */
     --card: 0 0% 100%;
-    --card-foreground: 30 22 40;
+    --card-foreground: 252 52% 26%;
     --popover: 0 0% 100%;
-    --popover-foreground: 30 22 40;
-    --primary: 30 22 40; /* #0A1628 - Deep navy */
-    --primary-foreground: 248 250 252;
-    --secondary: 172 85% 45%; /* #14B8A6 - Teal */
-    --secondary-foreground: 248 250 252;
+    --popover-foreground: 252 52% 26%;
+    --primary: 252 52% 26%; /* #291C6C - Midnight Blue */
+    --primary-foreground: 0 0% 100%;
+    --secondary: 219 67% 58%; /* #548FDB - Chetlaswaen Blue */
+    --secondary-foreground: 0 0% 100%;
     --muted: 210 40% 96%;
-    --muted-foreground: 215.4 16.3% 46.9%;
-    --accent: 43 100% 51%; /* #F59E0B - Amber */
-    --accent-foreground: 30 22 40;
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 210 40% 98%;
-    --border: 214.3 31.8% 91.4%;
-    --input: 214.3 31.8% 91.4%;
-    --ring: 30 22 40;
+    --muted-foreground: 220 13% 36%; /* #4B5563 - Text secondary */
+    --accent: 219 67% 58%; /* Using secondary as accent */
+    --accent-foreground: 0 0% 100%;
+    --destructive: 0 84% 60%; /* #EF4444 - Error */
+    --destructive-foreground: 0 0% 100%;
+    --border: 220 13% 91%; /* #E5E7EB - Border */
+    --input: 220 13% 91%;
+    --ring: 219 67% 58%;
+    --success: 142 76% 36%; /* #10B981 - Success */
     
     --radius: 0.75rem;
     
-    /* Premium Color System */
-    --navy-50: 248 250 252;
-    --navy-900: 30 22 40;
-    --teal-500: 172 85% 45%;
-    --amber-500: 43 100% 51%;
-    --slate-500: 215.4 16.3% 46.9%;
-    --slate-800: 215 25% 27%;
+    /* Premium Color System - New Palette */
+    --midnight-blue: 252 52% 26%; /* #291C6C */
+    --chetlaswaen-blue: 219 67% 58%; /* #548FDB */
+    --white: 0 0% 100%; /* #FFFFFF */
+    --text-secondary: 220 13% 36%; /* #4B5563 */
+    --border-color: 220 13% 91%; /* #E5E7EB */
+    --success-color: 142 76% 36%; /* #10B981 */
+    --error-color: 0 84% 60%; /* #EF4444 */
     
     /* Animated Gradients */
     --gradient-mesh: conic-gradient(from 180deg at 50% 50%, 
@@ -87,25 +89,25 @@
   }
 
   .dark {
-    --background: 30 22 40; /* Dark navy */
-    --foreground: 248 250 252;
-    --card: 215 25% 27%;
-    --card-foreground: 248 250 252;
-    --popover: 215 25% 27%;
-    --popover-foreground: 248 250 252;
-    --primary: 248 250 252;
-    --primary-foreground: 30 22 40;
-    --secondary: 172 85% 45%;
-    --secondary-foreground: 30 22 40;
-    --muted: 215 25% 27%;
-    --muted-foreground: 215.4 16.3% 65%;
-    --accent: 43 100% 51%;
-    --accent-foreground: 30 22 40;
-    --destructive: 0 62.8% 50%;
-    --destructive-foreground: 248 250 252;
-    --border: 215 25% 35%;
-    --input: 215 25% 35%;
-    --ring: 172 85% 45%;
+    --background: 252 52% 26%; /* Dark Midnight Blue */
+    --foreground: 0 0% 100%;
+    --card: 252 50% 22%;
+    --card-foreground: 0 0% 100%;
+    --popover: 252 50% 22%;
+    --popover-foreground: 0 0% 100%;
+    --primary: 0 0% 100%;
+    --primary-foreground: 252 52% 26%;
+    --secondary: 219 67% 58%;
+    --secondary-foreground: 0 0% 100%;
+    --muted: 252 50% 22%;
+    --muted-foreground: 220 13% 65%;
+    --accent: 219 67% 58%;
+    --accent-foreground: 0 0% 100%;
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
+    --border: 252 50% 30%;
+    --input: 252 50% 30%;
+    --ring: 219 67% 58%;
     
     /* Dark mode gradients */
     --gradient-mesh: conic-gradient(from 180deg at 50% 50%, 

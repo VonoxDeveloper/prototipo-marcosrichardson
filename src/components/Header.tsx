@@ -47,8 +47,8 @@ const Header = () => {
     <header 
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
         isScrolled 
-          ? 'glass shadow-3d-md py-2' 
-          : 'bg-transparent py-4'
+          ? 'bg-white/95 backdrop-blur-md shadow-sm py-2' 
+          : 'bg-white/90 backdrop-blur-md py-4'
       }`}
     >
       <div className="container mx-auto px-4">
@@ -62,7 +62,7 @@ const Header = () => {
               <GraduationCap className="h-10 w-10 text-secondary group-hover:animate-pulse" />
               <div className="absolute inset-0 rounded-full bg-secondary/20 blur-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
             </div>
-            <span className="text-2xl font-display font-bold text-gradient">
+            <span className="text-2xl font-display font-semibold text-primary">
               Colégio Prototipo
             </span>
           </Link>
@@ -73,7 +73,11 @@ const Header = () => {
               <Link
                 key={item.label}
                 to={item.href}
-                className={`nav-link ${location.pathname === item.href ? 'active' : ''}`}
+                className={`relative py-2 px-4 font-semibold text-primary hover:text-secondary transition-all duration-300 ${
+                  location.pathname === item.href 
+                    ? 'text-secondary after:w-full after:absolute after:bottom-0 after:left-0 after:h-0.5 after:bg-secondary after:content-[""]' 
+                    : 'after:w-0 after:absolute after:bottom-0 after:left-0 after:h-0.5 after:bg-secondary after:content-[""] after:transition-all after:duration-300 hover:after:w-full'
+                }`}
                 style={{ '--stagger': index } as React.CSSProperties}
               >
                 {item.label}
@@ -81,7 +85,7 @@ const Header = () => {
             ))}
           </nav>
 
-          {/* Desktop Utility Actions */}
+          {/* Desktop Utility Actions - Clean Design */}
           <div className="hidden lg:flex items-center space-x-4">
             <button
               onClick={toggleTheme}
@@ -91,19 +95,13 @@ const Header = () => {
               {isDark ? (
                 <Sun className="h-5 w-5 text-secondary" />
               ) : (
-                <Moon className="h-5 w-5 text-muted-foreground" />
+                <Moon className="h-5 w-5 text-primary" />
               )}
             </button>
             
             <button className="p-2 rounded-xl hover:bg-secondary/10 transition-all duration-300 hover:scale-110">
-              <Search className="h-5 w-5 text-muted-foreground" />
+              <Search className="h-5 w-5 text-primary" />
             </button>
-
-            {utilityItems.map((item) => (
-              <ButtonUI key={item.label} className="btn-premium" asChild>
-                <Link to={item.href}>{item.label}</Link>
-              </ButtonUI>
-            ))}
           </div>
 
           {/* Mobile Menu Button */}
