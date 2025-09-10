@@ -46,8 +46,8 @@ const Header = () => {
     <header 
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
         isScrolled 
-          ? 'bg-white/95 backdrop-blur-md shadow-sm py-2' 
-          : 'bg-white/90 backdrop-blur-md py-4'
+          ? 'bg-white/95 backdrop-blur-md shadow-sm py-2 dark:bg-[#18181B]/95 dark:shadow-lg' 
+          : 'bg-white/90 backdrop-blur-md py-4 dark:bg-[#18181B]/90'
       }`}
     >
       <div className="container mx-auto px-4">
@@ -61,7 +61,7 @@ const Header = () => {
               <GraduationCap className="icon-large text-secondary group-hover:animate-pulse" />
               <div className="absolute inset-0 rounded-full bg-secondary/20 blur-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
             </div>
-            <span className="text-2xl font-display font-semibold text-primary">
+            <span className="text-2xl font-display font-semibold text-primary dark:text-[#FAFAFA]">
               Colégio Prototipo
             </span>
           </Link>
@@ -72,10 +72,10 @@ const Header = () => {
               <Link
                 key={item.label}
                 to={item.href}
-                className={`relative py-2 px-4 font-semibold text-primary hover:text-secondary transition-all duration-300 ${
+                className={`relative py-2 px-4 font-semibold text-primary hover:text-secondary transition-all duration-200 dark:text-[#E4E4E7] dark:hover:text-[#5B8FF9] focus:ring-2 focus:ring-primary focus:ring-offset-2 dark:focus:ring-offset-[#0F0F10] ${
                   location.pathname === item.href 
-                    ? 'text-secondary after:w-full after:absolute after:bottom-0 after:left-0 after:h-0.5 after:bg-secondary after:content-[""]' 
-                    : 'after:w-0 after:absolute after:bottom-0 after:left-0 after:h-0.5 after:bg-secondary after:content-[""] after:transition-all after:duration-300 hover:after:w-full'
+                    ? 'text-secondary after:w-full after:absolute after:bottom-0 after:left-0 after:h-0.5 after:bg-secondary after:content-[""] dark:text-[#5B8FF9] dark:after:bg-[#5B8FF9]' 
+                    : 'after:w-0 after:absolute after:bottom-0 after:left-0 after:h-0.5 after:bg-secondary after:content-[""] after:transition-all after:duration-200 hover:after:w-full dark:after:bg-[#5B8FF9]'
                 }`}
                 style={{ '--stagger': index } as React.CSSProperties}
               >
@@ -137,16 +137,16 @@ const Header = () => {
               : 'max-h-0 opacity-0'
           }`}
         >
-          <div className="glass rounded-3xl m-4 p-6 border border-primary/10 backdrop-blur-md">
+          <div className="glass rounded-3xl m-4 p-6 border border-primary/10 backdrop-blur-md dark:bg-[#18181B]/90 dark:border-[#3F3F46]">
             <nav className="space-y-4">
               {navigationItems.map((item, index) => (
                 <Link
                   key={item.label}
                   to={item.href}
-                  className={`block py-4 px-4 rounded-xl transition-all duration-300 hover:bg-secondary/10 hover:pl-6 min-h-[44px] flex items-center ${
+                  className={`block py-4 px-4 rounded-xl transition-all duration-200 hover:bg-secondary/10 hover:pl-6 min-h-[44px] flex items-center focus:ring-2 focus:ring-primary focus:ring-offset-2 dark:focus:ring-offset-[#18181B] ${
                     location.pathname === item.href 
-                      ? 'bg-secondary/20 text-secondary font-semibold' 
-                      : 'text-foreground dark:text-foreground'
+                      ? 'bg-secondary/20 text-secondary font-semibold dark:bg-[#5B8FF9]/20 dark:text-[#5B8FF9]' 
+                      : 'text-foreground dark:text-[#E4E4E7] dark:hover:bg-[#27272A] dark:hover:text-[#FAFAFA]'
                   }`}
                   style={{ 
                     animationDelay: `${index * 0.1}s`,

@@ -23,26 +23,26 @@ const AboutSection = () => {
   ];
 
   return (
-    <section className="py-20 bg-white">
+    <section className="py-20 bg-white dark:bg-[#0F0F10]">
       <div className="container mx-auto px-4">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
           {/* Content */}
           <div className="space-y-8">
             <div className="slide-up">
-              <h2 className="text-4xl font-bold mb-6">
-                Uma Escola que <span className="text-gradient">Transforma Vidas</span>
+              <h2 className="text-4xl font-bold mb-6 dark:text-[#FAFAFA]">
+                Uma Escola que <span className="text-gradient dark:text-[#5B8FF9]">Transforma Vidas</span>
               </h2>
-              <p className="text-lg text-muted-foreground mb-6">
+              <p className="text-lg text-muted-foreground dark:text-[#E4E4E7] mb-6">
                 Há mais de 25 anos, nossa escola tem sido um marco na educação, 
                 combinando tradição e inovação para formar cidadãos preparados 
                 para os desafios do século XXI.
               </p>
-              <p className="text-lg text-muted-foreground mb-8">
+              <p className="text-lg text-muted-foreground dark:text-[#E4E4E7] mb-8">
                 Com uma proposta pedagógica diferenciada e uma equipe de educadores 
                 comprometidos, oferecemos um ambiente acolhedor onde cada aluno 
                 pode desenvolver seu potencial máximo.
               </p>
-              <ButtonUI>Conheça Nossa História</ButtonUI>
+              <ButtonUI className="dark:bg-[#5B8FF9] dark:hover:bg-[#6BA1FF] dark:text-[#0F0F10] dark:shadow-lg dark:shadow-[#5B8FF9]/20 dark:hover:shadow-xl dark:hover:shadow-[#5B8FF9]/30 transition-all duration-200 focus:ring-2 focus:ring-primary focus:ring-offset-2 dark:focus:ring-offset-[#0F0F10]">Conheça Nossa História</ButtonUI>
             </div>
           </div>
 
@@ -59,11 +59,11 @@ const AboutSection = () => {
               <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent" />
             </div>
             {/* Floating Stats - Mobile Optimized */}
-            <div className="absolute -bottom-3 -left-3 sm:-bottom-4 sm:-left-4 lg:-bottom-8 lg:-left-8 bg-white rounded-xl shadow-lg p-3 sm:p-4 lg:p-6 bounce-in">
-              <div className="text-xl sm:text-2xl lg:text-3xl font-bold text-primary">25+</div>
-              <div className="text-xs sm:text-sm text-muted-foreground">Anos de Tradição</div>
+            <div className="absolute -bottom-3 -left-3 sm:-bottom-4 sm:-left-4 lg:-bottom-8 lg:-left-8 bg-white dark:bg-[#18181B] dark:border dark:border-[#27272A] rounded-xl shadow-lg p-3 sm:p-4 lg:p-6 bounce-in">
+              <div className="text-xl sm:text-2xl lg:text-3xl font-bold text-primary dark:text-[#5B8FF9]">25+</div>
+              <div className="text-xs sm:text-sm text-muted-foreground dark:text-[#A1A1AA]">Anos de Tradição</div>
             </div>
-            <div className="absolute -top-3 -right-3 sm:-top-4 sm:-right-4 lg:-top-8 lg:-right-8 bg-primary text-white rounded-xl shadow-lg p-3 sm:p-4 lg:p-6 bounce-in">
+            <div className="absolute -top-3 -right-3 sm:-top-4 sm:-right-4 lg:-top-8 lg:-right-8 bg-primary dark:bg-[#5B8FF9] text-white dark:text-[#0F0F10] rounded-xl shadow-lg p-3 sm:p-4 lg:p-6 bounce-in">
               <div className="text-xl sm:text-2xl lg:text-3xl font-bold">98%</div>
               <div className="text-xs sm:text-sm opacity-90">Satisfação das Famílias</div>
             </div>
@@ -73,8 +73,8 @@ const AboutSection = () => {
         {/* Mission, Vision, Values */}
         <div className="mt-20">
           <div className="text-center mb-16">
-            <h3 className="text-3xl font-bold mb-4 slide-up">Nossos Pilares</h3>
-            <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
+            <h3 className="text-3xl font-bold mb-4 slide-up dark:text-[#FAFAFA]">Nossos Pilares</h3>
+            <p className="text-xl text-muted-foreground dark:text-[#E4E4E7] max-w-3xl mx-auto">
               Os valores que guiam nossa jornada educacional
             </p>
           </div>
@@ -85,15 +85,15 @@ const AboutSection = () => {
               return (
                 <Card 
                   key={value.title} 
-                  className={`card-school text-center fade-in`}
+                  className={`card-school text-center fade-in dark:bg-[#18181B] dark:border dark:border-[#27272A] dark:hover:bg-[#27272A] dark:shadow-xl dark:hover:shadow-2xl transition-all duration-200 hover:scale-[1.02]`}
                   style={{ animationDelay: `${index * 0.1}s` }}
                 >
                   <CardContent className="p-6 lg:p-8">
-                    <div className="w-12 h-12 sm:w-14 sm:h-14 lg:w-16 lg:h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto icon-spacing-card">
-                      <IconComponent className="icon-medium lg:icon-large text-primary" />
+                    <div className="w-12 h-12 sm:w-14 sm:h-14 lg:w-16 lg:h-16 bg-primary/10 dark:bg-[#5B8FF9]/20 rounded-full flex items-center justify-center mx-auto icon-spacing-card">
+                      <IconComponent className="icon-medium lg:icon-large text-primary dark:text-[#5B8FF9]" />
                     </div>
-                    <h4 className="text-lg sm:text-xl font-semibold mb-3 lg:mb-4">{value.title}</h4>
-                    <p className="text-sm sm:text-base text-muted-foreground">{value.description}</p>
+                    <h4 className="text-lg sm:text-xl font-semibold mb-3 lg:mb-4 dark:text-[#FAFAFA]">{value.title}</h4>
+                    <p className="text-sm sm:text-base text-muted-foreground dark:text-[#E4E4E7]">{value.description}</p>
                   </CardContent>
                 </Card>
               );

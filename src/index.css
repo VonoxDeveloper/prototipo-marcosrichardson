@@ -89,47 +89,55 @@
   }
 
   .dark {
-    --background: 220 16% 11%; /* #0F1419 - Consistent dark background */
-    --foreground: 210 20% 98%; /* #F8F9FA - High contrast text */
-    --card: 220 13% 18%; /* #1F2937 - Card background */
-    --card-foreground: 210 20% 98%;
-    --popover: 220 13% 18%;
-    --popover-foreground: 210 20% 98%;
-    --primary: 219 67% 58%; /* Keep secondary as primary in dark */
-    --primary-foreground: 210 20% 98%;
-    --secondary: 219 67% 68%; /* Lighter secondary for dark mode */
-    --secondary-foreground: 220 16% 11%;
-    --muted: 220 13% 22%; /* #374151 - Muted background */
-    --muted-foreground: 220 9% 69%; /* #B0B0B0 - Readable gray text */
-    --accent: 219 67% 68%;
-    --accent-foreground: 220 16% 11%;
+    /* Premium Dark Mode - WCAG AAA Contrast */
+    --background: 240 6% 6%; /* #0F0F10 - Base background */
+    --foreground: 0 0% 98%; /* #FAFAFA - High contrast titles */
+    --card: 240 6% 9%; /* #18181B - Card background */
+    --card-foreground: 240 5% 90%; /* #E4E4E7 - Paragraph text */
+    --popover: 240 6% 12%; /* #27272A - Elevated surfaces */
+    --popover-foreground: 0 0% 98%;
+    --primary: 221 83% 67%; /* #5B8FF9 - Optimized blue for dark */
+    --primary-foreground: 240 6% 6%; /* #0F0F10 - Dark text on blue */
+    --secondary: 221 83% 72%; /* #6BA1FF - Lighter blue for hover */
+    --secondary-foreground: 240 6% 6%;
+    --muted: 240 6% 15%; /* #27272A - Muted surfaces */
+    --muted-foreground: 240 5% 67%; /* #A1A1AA - Placeholder text */
+    --accent: 221 83% 67%;
+    --accent-foreground: 240 6% 6%;
     --destructive: 0 84% 60%;
-    --destructive-foreground: 210 20% 98%;
-    --border: 220 13% 28%; /* #4B5563 - Visible borders */
-    --input: 220 13% 22%; /* #374151 - Input background */
-    --ring: 219 67% 58%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 240 6% 25%; /* #3F3F46 - Subtle but visible borders */
+    --input: 240 6% 15%; /* #27272A - Input background */
+    --ring: 221 83% 67%; /* #5B8FF9 - Focus ring */
     
-    /* Dark mode gradients */
+    /* Premium Dark Mode Gradients */
     --gradient-mesh: conic-gradient(from 180deg at 50% 50%, 
       hsl(var(--primary)) 0deg, 
       hsl(var(--secondary)) 120deg, 
       hsl(var(--accent)) 240deg, 
       hsl(var(--primary)) 360deg);
-    --gradient-hero: radial-gradient(ellipse at center, 
-      hsl(var(--secondary) / 0.2) 0%, 
-      hsl(var(--accent) / 0.1) 50%, 
-      transparent 100%);
+    --gradient-hero: linear-gradient(180deg, 
+      hsl(240 6% 6%) 0%, 
+      hsl(240 6% 9%) 100%);
+    --gradient-card: linear-gradient(145deg, 
+      hsl(240 6% 9%) 0%, 
+      hsl(240 6% 12%) 100%);
     
-    --glass-bg: hsl(var(--background) / 0.8);
-    --glass-border: hsl(var(--secondary) / 0.2);
-    --sidebar-background: 240 5.9% 10%;
-    --sidebar-foreground: 240 4.8% 95.9%;
-    --sidebar-primary: 224.3 76.3% 48%;
-    --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 240 3.7% 15.9%;
-    --sidebar-accent-foreground: 240 4.8% 95.9%;
-    --sidebar-border: 240 3.7% 15.9%;
-    --sidebar-ring: 217.2 91.2% 59.8%;
+    /* Enhanced Dark Mode Variables */
+    --glass-bg: hsl(240 6% 9% / 0.8);
+    --glass-border: hsl(240 6% 25% / 0.3);
+    --shadow-dark: 0 10px 25px -12px hsl(0 0% 0% / 0.6);
+    --shadow-glow-dark: 0 0 40px hsl(221 83% 67% / 0.2);
+    --hover-bg: 240 6% 15%; /* #27272A - Hover states */
+    --modal-bg: 240 6% 18%; /* #2C2C30 - Modal background */
+    --sidebar-background: 240 6% 9%;
+    --sidebar-foreground: 240 5% 90%;
+    --sidebar-primary: 221 83% 67%;
+    --sidebar-primary-foreground: 240 6% 6%;
+    --sidebar-accent: 240 6% 15%;
+    --sidebar-accent-foreground: 240 5% 90%;
+    --sidebar-border: 240 6% 25%;
+    --sidebar-ring: 221 83% 67%;
   }
 }
 
@@ -217,11 +225,13 @@
     border: 1px solid var(--glass-border);
   }
 
-  /* Interactive Elements */
+  /* Enhanced Interactive Elements for Dark Mode */
   .btn-premium {
     @apply relative overflow-hidden px-8 py-4 rounded-2xl font-display font-semibold;
     @apply bg-gradient-to-r from-primary to-secondary text-primary-foreground;
-    @apply shadow-3d-md hover:shadow-3d-lg transition-all duration-300;
+    @apply shadow-3d-md hover:shadow-3d-lg transition-all duration-200;
+    @apply dark:bg-primary dark:hover:bg-secondary dark:text-[#0F0F10];
+    @apply dark:shadow-lg dark:shadow-primary/20 dark:hover:shadow-xl dark:hover:shadow-primary/30;
     @apply before:absolute before:inset-0 before:bg-gradient-to-r before:from-white/20 before:to-transparent;
     @apply before:translate-x-[-100%] hover:before:translate-x-[100%] before:transition-transform before:duration-700;
   }
@@ -229,16 +239,33 @@
   .btn-ghost-premium {
     @apply relative px-8 py-4 rounded-2xl font-display font-semibold;
     @apply border-2 border-secondary/30 text-secondary hover:text-secondary-foreground;
-    @apply hover:bg-secondary hover:border-secondary transition-all duration-300;
-    @apply hover:shadow-glow;
+    @apply hover:bg-secondary hover:border-secondary transition-all duration-200;
+    @apply dark:border-2 dark:border-primary dark:text-primary dark:hover:bg-primary dark:hover:text-[#0F0F10];
+    @apply hover:shadow-glow focus:ring-2 focus:ring-primary focus:ring-offset-2 dark:focus:ring-offset-[#0F0F10];
   }
 
-  /* Card System */
+  /* Quick Action Cards */
+  .quick-action-card {
+    @apply transition-all duration-200 hover:scale-105;
+    @apply dark:bg-[#27272A] dark:hover:bg-[#2C2C30] dark:border dark:border-[#3F3F46];
+    @apply dark:text-[#E4E4E7] dark:hover:text-[#FAFAFA];
+    @apply focus:ring-2 focus:ring-primary focus:ring-offset-2 dark:focus:ring-offset-[#0F0F10];
+  }
+
+  /* Enhanced Card System for Dark Mode */
   .card-premium {
     @apply relative p-8 rounded-3xl glass;
     @apply shadow-3d-lg hover:shadow-3d-lg hover:-translate-y-2;
-    @apply transition-all duration-500 hover:bg-gradient-to-br hover:from-secondary/5 hover:to-accent/5;
+    @apply transition-all duration-200 hover:bg-gradient-to-br hover:from-secondary/5 hover:to-accent/5;
     @apply border border-primary/10 hover:border-secondary/30;
+    @apply dark:bg-[#18181B] dark:border dark:border-[#27272A] dark:hover:bg-[#27272A];
+    @apply dark:shadow-xl dark:hover:shadow-2xl dark:text-[#E4E4E7];
+  }
+
+  .card-dark-premium {
+    @apply bg-[#18181B] border border-[#27272A] hover:bg-[#27272A];
+    @apply shadow-xl hover:shadow-2xl transition-all duration-200;
+    @apply text-[#E4E4E7] hover:scale-[1.02];
   }
 
   .card-3d {
