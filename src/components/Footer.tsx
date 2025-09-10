@@ -9,16 +9,16 @@ const Footer = () => {
           {/* Logo e Informações */}
           <div className="space-y-4">
             <div className="flex items-center space-x-2">
-              <GraduationCap className="h-8 w-8 text-white" />
+              <GraduationCap className="icon-large text-white" />
               <span className="text-xl font-bold text-white">Colégio Prototipo</span>
             </div>
             <p className="text-secondary-foreground/80">
               Formando cidadãos conscientes e preparados para o futuro.
             </p>
             <div className="flex space-x-4">
-              <Facebook className="h-5 w-5 text-white hover:text-accent cursor-pointer transition-colors" />
-              <Instagram className="h-5 w-5 text-white hover:text-accent cursor-pointer transition-colors" />
-              <Youtube className="h-5 w-5 text-white hover:text-accent cursor-pointer transition-colors" />
+              <Facebook className="icon-small text-white hover:text-accent cursor-pointer transition-colors icon-spacing-social" />
+              <Instagram className="icon-small text-white hover:text-accent cursor-pointer transition-colors icon-spacing-social" />
+              <Youtube className="icon-small text-white hover:text-accent cursor-pointer transition-colors icon-spacing-social" />
             </div>
           </div>
 
@@ -81,19 +81,19 @@ const Footer = () => {
             <h3 className="text-lg font-semibold text-white mb-4">Contato</h3>
             <div className="space-y-3">
               <div className="flex items-center space-x-2">
-                <MapPin className="h-4 w-4 text-white" />
+                <MapPin className="icon-small text-white icon-spacing-list" />
                 <span className="text-secondary-foreground/80 text-sm">
                   Rua da Educação, 123 - Centro
                 </span>
               </div>
               <div className="flex items-center space-x-2">
-                <Phone className="h-4 w-4 text-white" />
+                <Phone className="icon-small text-white icon-spacing-list" />
                 <span className="text-secondary-foreground/80 text-sm">
                   (11) 1234-5678
                 </span>
               </div>
               <div className="flex items-center space-x-2">
-                <Mail className="h-4 w-4 text-white" />
+                <Mail className="icon-small text-white icon-spacing-list" />
                 <span className="text-secondary-foreground/80 text-sm">
                   contato@escolaexemplo.com.br
                 </span>

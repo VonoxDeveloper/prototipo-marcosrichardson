@@ -89,24 +89,24 @@
   }
 
   .dark {
-    --background: 252 52% 26%; /* Dark Midnight Blue */
-    --foreground: 0 0% 100%;
-    --card: 252 50% 22%;
-    --card-foreground: 0 0% 100%;
-    --popover: 252 50% 22%;
-    --popover-foreground: 0 0% 100%;
-    --primary: 0 0% 100%;
-    --primary-foreground: 252 52% 26%;
-    --secondary: 219 67% 58%;
-    --secondary-foreground: 0 0% 100%;
-    --muted: 252 50% 22%;
-    --muted-foreground: 220 13% 65%;
-    --accent: 219 67% 58%;
-    --accent-foreground: 0 0% 100%;
+    --background: 220 16% 11%; /* #0F1419 - Consistent dark background */
+    --foreground: 210 20% 98%; /* #F8F9FA - High contrast text */
+    --card: 220 13% 18%; /* #1F2937 - Card background */
+    --card-foreground: 210 20% 98%;
+    --popover: 220 13% 18%;
+    --popover-foreground: 210 20% 98%;
+    --primary: 219 67% 58%; /* Keep secondary as primary in dark */
+    --primary-foreground: 210 20% 98%;
+    --secondary: 219 67% 68%; /* Lighter secondary for dark mode */
+    --secondary-foreground: 220 16% 11%;
+    --muted: 220 13% 22%; /* #374151 - Muted background */
+    --muted-foreground: 220 9% 69%; /* #B0B0B0 - Readable gray text */
+    --accent: 219 67% 68%;
+    --accent-foreground: 220 16% 11%;
     --destructive: 0 84% 60%;
-    --destructive-foreground: 0 0% 100%;
-    --border: 252 50% 30%;
-    --input: 252 50% 30%;
+    --destructive-foreground: 210 20% 98%;
+    --border: 220 13% 28%; /* #4B5563 - Visible borders */
+    --input: 220 13% 22%; /* #374151 - Input background */
     --ring: 219 67% 58%;
     
     /* Dark mode gradients */
@@ -156,6 +156,49 @@
 }
 
 @layer utilities {
+  /* Icon Standardization */
+  .icon-small {
+    @apply w-5 h-5; /* 20px */
+  }
+  
+  .icon-medium {
+    @apply w-6 h-6; /* 24px */
+  }
+  
+  .icon-large {
+    @apply w-8 h-8; /* 32px */
+  }
+  
+  /* Icon spacing standards */
+  .icon-spacing-header {
+    @apply mx-2; /* 8px margin for header icons */
+  }
+  
+  .icon-spacing-card {
+    @apply mb-3; /* 12px margin for card icons */
+  }
+  
+  .icon-spacing-list {
+    @apply mr-2; /* 8px margin for list icons */
+  }
+  
+  .icon-spacing-button {
+    @apply px-2; /* 8px padding for button icons */
+  }
+  
+  .icon-spacing-social {
+    @apply mx-4; /* 16px margin for social icons */
+  }
+  
+  /* Banner standardization */
+  .banner-height {
+    @apply h-[250px] md:h-[400px]; /* Consistent heights */
+  }
+  
+  .banner-image {
+    @apply w-full object-cover aspect-video; /* 16:9 aspect ratio */
+  }
+
   /* Typography Enhancements */
   .text-gradient {
     @apply bg-gradient-to-r from-primary via-secondary to-accent bg-clip-text text-transparent;

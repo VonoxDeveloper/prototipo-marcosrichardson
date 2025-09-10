@@ -39,8 +39,7 @@ const Header = () => {
   ];
 
   const utilityItems = [
-    { label: "Portal do Aluno", href: "/portal-aluno" },
-    { label: "Agenda", href: "/calendario" }
+    { label: "Agendar Visita", href: "/visitas" }
   ];
 
   return (
@@ -59,7 +58,7 @@ const Header = () => {
             className="flex items-center space-x-3 group hover:scale-105 transition-all duration-300"
           >
             <div className="relative">
-              <GraduationCap className="h-10 w-10 text-secondary group-hover:animate-pulse" />
+              <GraduationCap className="icon-large text-secondary group-hover:animate-pulse" />
               <div className="absolute inset-0 rounded-full bg-secondary/20 blur-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
             </div>
             <span className="text-2xl font-display font-semibold text-primary">
@@ -89,18 +88,18 @@ const Header = () => {
           <div className="hidden lg:flex items-center space-x-4">
             <button
               onClick={toggleTheme}
-              className="p-2 rounded-xl hover:bg-secondary/10 transition-all duration-300 hover:scale-110"
+              className="p-2 rounded-xl hover:bg-secondary/10 transition-all duration-300 hover:scale-110 icon-spacing-header"
               aria-label="Toggle theme"
             >
               {isDark ? (
-                <Sun className="h-5 w-5 text-secondary" />
+                <Sun className="icon-small text-secondary" />
               ) : (
-                <Moon className="h-5 w-5 text-primary" />
+                <Moon className="icon-small text-primary" />
               )}
             </button>
             
-            <button className="p-2 rounded-xl hover:bg-secondary/10 transition-all duration-300 hover:scale-110">
-              <Search className="h-5 w-5 text-primary" />
+            <button className="p-2 rounded-xl hover:bg-secondary/10 transition-all duration-300 hover:scale-110 icon-spacing-header">
+              <Search className="icon-small text-primary" />
             </button>
           </div>
 
@@ -132,22 +131,22 @@ const Header = () => {
 
         {/* Mobile Menu */}
         <div 
-          className={`lg:hidden transition-all duration-500 overflow-hidden ${
+          className={`lg:hidden transition-all duration-300 ease-in-out overflow-hidden ${
             isMenuOpen 
               ? 'max-h-screen opacity-100' 
               : 'max-h-0 opacity-0'
           }`}
         >
-          <div className="glass rounded-3xl m-4 p-6 border border-primary/10">
+          <div className="glass rounded-3xl m-4 p-6 border border-primary/10 backdrop-blur-md">
             <nav className="space-y-4">
               {navigationItems.map((item, index) => (
                 <Link
                   key={item.label}
                   to={item.href}
-                  className={`block py-3 px-4 rounded-xl transition-all duration-300 hover:bg-secondary/10 hover:pl-6 ${
+                  className={`block py-4 px-4 rounded-xl transition-all duration-300 hover:bg-secondary/10 hover:pl-6 min-h-[44px] flex items-center ${
                     location.pathname === item.href 
                       ? 'bg-secondary/20 text-secondary font-semibold' 
-                      : 'text-muted-foreground'
+                      : 'text-foreground dark:text-foreground'
                   }`}
                   style={{ 
                     animationDelay: `${index * 0.1}s`,
@@ -167,9 +166,9 @@ const Header = () => {
                     className="p-2 rounded-lg hover:bg-secondary/10 transition-all duration-300"
                   >
                     {isDark ? (
-                      <Sun className="h-5 w-5 text-secondary" />
+                      <Sun className="icon-small text-secondary" />
                     ) : (
-                      <Moon className="h-5 w-5 text-muted-foreground" />
+                      <Moon className="icon-small text-muted-foreground" />
                     )}
                   </button>
                 </div>
@@ -178,7 +177,7 @@ const Header = () => {
                   <Link
                     key={item.label}
                     to={item.href}
-                    className="block w-full btn-premium text-center"
+                    className="block w-full py-3 px-6 bg-secondary hover:bg-secondary-foreground text-white hover:text-secondary rounded-xl text-center transition-all duration-300 font-semibold"
                     onClick={() => setIsMenuOpen(false)}
                   >
                     {item.label}

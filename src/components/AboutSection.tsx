@@ -89,8 +89,8 @@ const AboutSection = () => {
                   style={{ animationDelay: `${index * 0.1}s` }}
                 >
                   <CardContent className="p-6 lg:p-8">
-                    <div className="w-12 h-12 sm:w-14 sm:h-14 lg:w-16 lg:h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-4 lg:mb-6">
-                      <IconComponent className="h-6 w-6 sm:h-7 sm:w-7 lg:h-8 lg:w-8 text-primary" />
+                    <div className="w-12 h-12 sm:w-14 sm:h-14 lg:w-16 lg:h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto icon-spacing-card">
+                      <IconComponent className="icon-medium lg:icon-large text-primary" />
                     </div>
                     <h4 className="text-lg sm:text-xl font-semibold mb-3 lg:mb-4">{value.title}</h4>
                     <p className="text-sm sm:text-base text-muted-foreground">{value.description}</p>

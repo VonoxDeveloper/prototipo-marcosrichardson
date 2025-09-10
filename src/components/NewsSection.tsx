@@ -60,7 +60,7 @@ const NewsSection = () => {
               </div>
               <CardContent className="p-4 sm:p-6">
                 <div className="flex items-center text-xs sm:text-sm text-muted-foreground mb-3">
-                  <Calendar className="h-3 w-3 sm:h-4 sm:w-4 mr-2" />
+                  <Calendar className="icon-small icon-spacing-list" />
                   {item.date}
                 </div>
                 <h3 className="text-lg sm:text-xl font-semibold mb-3 line-clamp-2">
