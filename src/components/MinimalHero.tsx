@@ -18,13 +18,13 @@ const MinimalHero = () => {
 
       {/* Content */}
       <div className="relative z-10 text-center text-white px-4 max-w-4xl mx-auto">
-        <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold mb-8 leading-tight">
-          Educação que <span className="text-primary">transforma</span>
+        <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold mb-8 leading-tight text-white dark:text-gray-100">
+          Educação que <span className="text-secondary dark:text-gray-100">transforma</span>
         </h1>
         
         <div className="mt-12">
           <Link to="/sobre">
-            <ButtonUI size="lg" className="text-lg px-8 py-4">
+            <ButtonUI size="lg" className="text-lg px-8 py-4 min-h-[44px] bg-primary text-white hover:bg-primary/90 dark:bg-primary dark:text-white dark:hover:bg-primary/90 focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-black transition-all duration-200">
               Conhecer a escola
             </ButtonUI>
           </Link>

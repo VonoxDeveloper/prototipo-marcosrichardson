@@ -82,11 +82,11 @@ const Sobre = () => {
 
       <main className="pt-16">
         {/* História Section */}
-        <section className="py-20 bg-white">
+        <section className="py-20 bg-white dark:bg-gray-900">
           <div className="container mx-auto px-4">
             <div className="text-center mb-16 slide-up">
-              <h2 className="text-4xl font-bold mb-6">Nossa História</h2>
-              <p className="text-xl text-muted-foreground max-w-4xl mx-auto">
+              <h2 className="text-4xl font-bold mb-6 text-foreground dark:text-gray-100">Nossa História</h2>
+              <p className="text-xl text-muted-foreground dark:text-gray-300 max-w-4xl mx-auto">
                 O Colégio Prototipo foi fundado há mais de 100 anos no bairro das Laranjeiras, Rio de Janeiro. 
                 Desde então, tornou-se referência em formação integral, alicerçado em valores éticos e excelência acadêmica.
               </p>
@@ -103,9 +103,9 @@ const Sobre = () => {
                     style={{ animationDelay: `${index * 0.2}s` }}
                   >
                     <div className={`w-5/12 ${index % 2 === 0 ? 'text-right pr-8' : 'text-left pl-8'}`}>
-                      <div className="bg-white p-6 rounded-lg shadow-lg border">
-                        <div className="text-2xl font-bold text-primary mb-2">{item.year}</div>
-                        <div className="text-muted-foreground">{item.event}</div>
+                      <div className="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-lg border dark:border-gray-700">
+                        <div className="text-2xl font-bold text-primary dark:text-gray-100 mb-2">{item.year}</div>
+                        <div className="text-muted-foreground dark:text-gray-300">{item.event}</div>
                       </div>
                     </div>
                     <div className="absolute left-1/2 transform -translate-x-1/2 w-4 h-4 bg-primary rounded-full border-4 border-white shadow-lg"></div>
@@ -117,11 +117,11 @@ const Sobre = () => {
         </section>
 
         {/* Mission Vision Values */}
-        <section className="py-20 bg-muted/30">
+        <section className="py-20 bg-muted/30 dark:bg-gray-800">
           <div className="container mx-auto px-4">
             <div className="text-center mb-16 slide-up">
-              <h2 className="text-4xl font-bold mb-6">Missão, Visão e Valores</h2>
-              <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
+              <h2 className="text-4xl font-bold mb-6 text-foreground dark:text-gray-100">Missão, Visão e Valores</h2>
+              <p className="text-xl text-muted-foreground dark:text-gray-300 max-w-3xl mx-auto">
                 Os princípios que norteiam nossa jornada educacional
               </p>
             </div>

@@ -25,10 +25,10 @@ const SegmentsPreview = () => {
   ];
 
   return (
-    <section className="py-20 bg-muted/30">
+    <section className="py-20 bg-muted/30 dark:bg-gray-800">
       <div className="container mx-auto px-4">
         <div className="text-center mb-12">
-          <h2 className="text-3xl lg:text-4xl font-bold text-foreground mb-4">
+          <h2 className="text-3xl lg:text-4xl font-bold text-foreground dark:text-gray-100 mb-4">
             Nossos Segmentos
           </h2>
         </div>
@@ -37,16 +37,16 @@ const SegmentsPreview = () => {
           {segments.map((segment, index) => (
             <Card 
               key={index} 
-              className="group cursor-pointer hover:shadow-lg transition-all duration-300 hover:scale-105"
+              className="group cursor-pointer hover:shadow-lg dark:hover:shadow-2xl transition-all duration-300 hover:scale-105 bg-white dark:bg-gray-900 border dark:border-gray-700"
             >
-              <a href={segment.href} className="block">
+              <a href={segment.href} className="block min-h-[44px] focus:ring-2 focus:ring-primary focus:ring-offset-2 dark:focus:ring-offset-gray-900 focus:outline-none rounded-lg">
                 <CardHeader className="pb-4">
-                  <CardTitle className="text-lg group-hover:text-primary transition-colors">
+                  <CardTitle className="text-lg group-hover:text-primary dark:group-hover:text-gray-300 transition-colors text-foreground dark:text-gray-100">
                     {segment.title}
                   </CardTitle>
                 </CardHeader>
                 <CardContent>
-                  <p className="text-muted-foreground leading-relaxed">
+                  <p className="text-muted-foreground dark:text-gray-300 leading-relaxed">
                     {segment.desc}
                   </p>
                 </CardContent>

@@ -82,11 +82,11 @@ const Contato = () => {
 
       <main className="pt-16">
         {/* Contact Information */}
-        <section className="py-20 bg-white">
+        <section className="py-20 bg-white dark:bg-gray-900">
           <div className="container mx-auto px-4">
             <div className="text-center mb-16 slide-up">
-              <h2 className="text-4xl font-bold mb-6">Informações de Contato</h2>
-              <p className="text-xl text-muted-foreground">
+              <h2 className="text-4xl font-bold mb-6 text-foreground dark:text-gray-100">Informações de Contato</h2>
+              <p className="text-xl text-muted-foreground dark:text-gray-300">
                 Entre em contato conosco através dos canais abaixo
               </p>
             </div>
@@ -97,15 +97,15 @@ const Contato = () => {
                 return (
                   <Card 
                     key={info.type}
-                    className="text-center hover-scale fade-in"
+                    className="text-center hover-scale fade-in bg-white dark:bg-gray-800 border dark:border-gray-700"
                     style={{ animationDelay: `${index * 0.2}s` }}
                   >
                     <CardContent className="p-8">
-                      <div className="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-6 bounce-in">
-                        <IconComponent className="h-8 w-8 text-primary" />
+                      <div className="w-16 h-16 bg-primary/10 dark:bg-gray-700 rounded-full flex items-center justify-center mx-auto mb-6 bounce-in">
+                        <IconComponent className="h-8 w-8 text-primary dark:text-gray-100" />
                       </div>
-                      <h3 className="text-xl font-semibold mb-4">{info.label}</h3>
-                      <p className="text-muted-foreground">{info.text}</p>
+                      <h3 className="text-xl font-semibold mb-4 text-foreground dark:text-gray-100">{info.label}</h3>
+                      <p className="text-muted-foreground dark:text-gray-300">{info.text}</p>
                     </CardContent>
                   </Card>
                 );
@@ -148,12 +148,12 @@ const Contato = () => {
         </section>
 
         {/* Contact Form */}
-        <section className="py-20 bg-white">
+        <section className="py-20 bg-white dark:bg-gray-900">
           <div className="container mx-auto px-4">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
               <div className="slide-up">
-                <h2 className="text-4xl font-bold mb-6">Envie uma Mensagem</h2>
-                <p className="text-lg text-muted-foreground mb-8">
+                <h2 className="text-4xl font-bold mb-6 text-foreground dark:text-gray-100">Envie uma Mensagem</h2>
+                <p className="text-lg text-muted-foreground dark:text-gray-300 mb-8">
                   Preencha o formulário para dúvidas, agendar visita ou solicitar informações. 
                   Retornaremos em breve!
                 </p>
@@ -226,7 +226,7 @@ const Contato = () => {
 
                     <ButtonUI 
                       type="submit" 
-                      className="w-full h-12"
+                      className="w-full h-12 min-h-[44px] dark:bg-primary dark:text-white dark:hover:bg-primary/90 focus:ring-2 focus:ring-primary focus:ring-offset-2 dark:focus:ring-offset-gray-800"
                     >
                       Enviar Mensagem
                     </ButtonUI>

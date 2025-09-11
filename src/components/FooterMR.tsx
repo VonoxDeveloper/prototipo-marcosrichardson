@@ -36,21 +36,21 @@ const FooterMR = () => {
   ];
 
   return (
-    <footer className="bg-foreground text-white py-16">
+    <footer className="bg-foreground dark:bg-gray-900 text-white dark:text-gray-100 py-16">
       <div className="container mx-auto px-4">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
           {/* Logo and Info */}
           <div className="lg:col-span-1">
-            <Link to="/" className="flex items-center gap-3 mb-6">
-              <div className="bg-primary text-primary-foreground p-2 rounded-lg">
+            <Link to="/" className="flex items-center gap-3 mb-6 min-h-[44px]">
+              <div className="bg-primary text-primary-foreground dark:bg-primary dark:text-white p-2 rounded-lg">
                 <GraduationCap size={24} />
               </div>
               <div className="flex flex-col">
-                <span className="font-bold text-lg">Colégio</span>
-                <span className="font-bold text-lg text-secondary -mt-1">Marcos Richardson</span>
+                <span className="font-bold text-lg text-white dark:text-gray-100">Colégio</span>
+                <span className="font-bold text-lg text-secondary dark:text-gray-300 -mt-1">Marcos Richardson</span>
               </div>
             </Link>
-            <p className="text-white/80 leading-relaxed mb-6">
+            <p className="text-white/80 dark:text-gray-300 leading-relaxed mb-6">
               Educação que inspira o futuro. Do Infantil ao Médio, uma jornada acadêmica com propósito, tecnologia e acolhimento.
             </p>
             
@@ -62,10 +62,10 @@ const FooterMR = () => {
                   href={social.href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="p-2 bg-white/10 hover:bg-white/20 rounded-full transition-colors"
+                  className="p-2 bg-white/10 dark:bg-gray-700 hover:bg-white/20 dark:hover:bg-gray-600 rounded-full transition-colors min-h-[44px] min-w-[44px] flex items-center justify-center focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-900"
                   aria-label={social.label}
                 >
-                  <social.icon size={20} />
+                  <social.icon size={20} className="text-white dark:text-gray-100" />
                 </a>
               ))}
             </div>
@@ -74,14 +74,14 @@ const FooterMR = () => {
           {/* Footer Columns */}
           {footerColumns.map((column, index) => (
             <div key={index}>
-              <h3 className="font-bold text-lg mb-4 text-secondary">{column.title}</h3>
+              <h3 className="font-bold text-lg mb-4 text-secondary dark:text-gray-300">{column.title}</h3>
               <ul className="space-y-3">
                 {column.links.map((link, linkIndex) => (
                   <li key={linkIndex}>
                     {link.href.startsWith('http') || link.href.startsWith('tel:') || link.href.startsWith('mailto:') ? (
                       <a
                         href={link.href}
-                        className="text-white/80 hover:text-white transition-colors"
+                        className="text-white/80 dark:text-gray-300 hover:text-white dark:hover:text-gray-100 transition-colors min-h-[44px] py-2 block focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-900 focus:outline-none"
                         target={link.href.startsWith('http') ? "_blank" : undefined}
                         rel={link.href.startsWith('http') ? "noopener noreferrer" : undefined}
                       >
@@ -90,7 +90,7 @@ const FooterMR = () => {
                     ) : (
                       <Link
                         to={link.href}
-                        className="text-white/80 hover:text-white transition-colors"
+                        className="text-white/80 dark:text-gray-300 hover:text-white dark:hover:text-gray-100 transition-colors min-h-[44px] py-2 block focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-900 focus:outline-none"
                       >
                         {link.label}
                       </Link>
@@ -103,8 +103,8 @@ const FooterMR = () => {
         </div>
 
         {/* Bottom Bar */}
-        <div className="border-t border-white/20 pt-8 text-center">
-          <p className="text-white/60">
+        <div className="border-t border-white/20 dark:border-gray-700 pt-8 text-center">
+          <p className="text-white/60 dark:text-gray-400">
             © 2025 Colégio Marcos Richardson. Todos os direitos reservados.
           </p>
         </div>
